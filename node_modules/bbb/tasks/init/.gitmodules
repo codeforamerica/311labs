@@ -1,0 +1,3 @@
+[submodule "bbb/root"]
+	path = bbb/root
+	url = git://github.com/tbranyen/backbone-boilerplate.git
