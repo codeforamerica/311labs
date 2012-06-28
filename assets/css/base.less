@@ -1,5 +1,43 @@
-@base: #ffffff;
+@background: #9f2b63;
 
-span { 
-  color: @base;
+body {
+  font-family: 'Lato', 'Helvetica', sans-serif;
+  font-weight: 400;
+/*  background: url('../img/background_pattern.png');
+*/}
+
+.nav {
+  font-size: 18px;
+  padding: 20px 0px 0px 300px;
+  display: block;
+  margin: auto;
+}
+
+.navbar {
+  margin: 0px;
+  height: 90px;
+}
+
+.navbar .nav > li > a {
+  color: #ffffff;
+}
+
+.navbar .nav > li > a, footer li {
+  &:hover{
+    color: #40d5a2;
+    text-decoration: underline;
+  }
+}
+
+.navbar .nav > li > a > img {
+  padding-top: 0px;
+}
+
+.navbar-inner {
+  background: url('../img/background_pattern.png');
+  padding-left: 0;
+  padding-right: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
