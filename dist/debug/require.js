@@ -316,7 +316,7 @@ var requirejs, require, define;
 this['JST'] = this['JST'] || {};
 
 this['JST']['app/templates/labs.html'] = function(data) { return function (obj,_) {
-var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div id="test">\n<h1>this is labz</h1>\n\n<span>you like it?</span>\n<span>maybe you try click on links?</span><br />\n\n<br />\n<br />\n\n<li>\n<a href="http://dailybrief.311labs.org/boston">Boston DailyBrief-a-roo</a>\n</li><br />\n<li>\n<a href="http://dailybrief.311labs.org/baltimore">Balti MOAR!!!! brief</a>\n</li>\n\n<br />\n<br />\n<br />\n\n<h3>\n  <span>thank you for trying the briefs - send us the\n    <a href="http://www.forcefeedback.tv/"> feedback?</a></span>\n</h3>\n</div>\n');}return __p.join('');
+var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="navbar-inner">\n  <div class="container">\n    <div class="row">\n  \t  <div class="span12 navbar">\n  \t    <ul class="nav">\n          <li><a href="/">Experiments</a></li>\n          <li><a href="http://open311.org/" target="_blank">Open311</a></li>\n          <li class="logo"><a href="/"><img src="assets/img/labs_logo.png"></a></li>\n          <li><a href="/">About</a></li>\n          <li><a href="/">Contact Us</a></li>\n        </ul>\n  \t  </div>\n\t  </div>\n  </div>\n</div>\n\n<div class="banner">\n  <div class="container">\n    <div class="row">\n     <div class="span12 banner-image">\n       <img class="welcome"src="assets/img/welcome.png" alt="Welcome" />\n       <img class="beaker" src="assets/img/beaker2.png" alt="Beaker" />\n       <img class="tagline" src="assets/img/labs.png" alt="Pushing the boundaries of civic data - one service request at a time" />\n     </div>\n    </div>\n  </div>\n</div>  \n\n<div class="featured-app">\n  <div class="container">\n    \n    <div class="row">\n      <div class="span5 offset1 app">\n        <h1><img class="star" src="assets/img/star.jpg">FEATURED APP:</h1>\n        <img class="screenshot" src="assets/img/daily_brief_screenshot.jpg" alt="The Daily Brief" />\n      </div>\n      <div class="span6 blurb">\n        <img src="assets/img/daily_brief_logo.jpg" alt="The Daily Brief logo" />\n        <p>Get a snapshot of what is going on in your city now based on<br />Open311 data.</p>\n        <h2>Check out cities that are currently using it:</h2>\n        <ul class="unstyled cities">\n          <li><a href="http://dailybrief.311labs.org/boston" target="_blank">Boston, MA</a></li>\n          <li><a href="http://dailybrief.311labs.org/baltimore" target="_blank">Baltimore, MD</a></li>\n          <li><a href="http://dailybrief.311labs.org/bloomington" target="_blank">Bloomington, IN</a></li>\n        </ul>\n      </div>\n    </div>\n\n    <div class="row">\n      <div class="span11 offset1 citysignup">\n        <h3>Want The Daily Brief in your city? Let our scientist know!</h3>\n        <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">\n        <input type="text" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">\n        <input type="submit" class="button" value="SUBMIT">\n      </div>  \n    </div> \n\n  </div>\n</div>\n\n<div class="broughtby">\n  <div class="container">\n    <div class="row">\n      <div class="span12">\n        <div class="center">\n          <span class="broughtbytxt">Brought to you by:</span><br />\n          <img src="assets/img/cfa_logo.png" alt="Code for America logo" /> \n          <span class="plus">+</span>\n          <img src="assets/img/chi_logo.png" alt="City of Chicago logo" />\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<footer>\n  <div class="container">\n    <div class="row">\n      <div class="span5 emailsignup">\n        <label>Civic experiments, delivered!</label>\n        <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">\n        <input type="submit" class="small-button" value="JOIN">\n      </div>\n      <div class="span7">  \n        <ul class="unstyled">\n          <li><a href="/">Experiments</a></li>\n          <li><a href="http://open311.org/" target="_blank">Open311</a></li>\n          <li><a href="/">About</a></li>\n          <li><a href="/">Contact Us</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</footer>\n');}return __p.join('');
 }(data, _)};
 
 /*!
@@ -14770,12 +14770,1850 @@ function($, _, Backbone) {
   }, Backbone.Events);
 });
 
+/* ===================================================
+ * bootstrap-transition.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#transitions
+ * ===================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+!function ($) {
+
+  $(function () {
+
+     // jshint ;_;
+
+
+    /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
+     * ======================================================= */
+
+    $.support.transition = (function () {
+
+      var transitionEnd = (function () {
+
+        var el = document.createElement('bootstrap')
+          , transEndEventNames = {
+               'WebkitTransition' : 'webkitTransitionEnd'
+            ,  'MozTransition'    : 'transitionend'
+            ,  'OTransition'      : 'oTransitionEnd'
+            ,  'msTransition'     : 'MSTransitionEnd'
+            ,  'transition'       : 'transitionend'
+            }
+          , name
+
+        for (name in transEndEventNames){
+          if (el.style[name] !== undefined) {
+            return transEndEventNames[name]
+          }
+        }
+
+      }())
+
+      return transitionEnd && {
+        end: transitionEnd
+      }
+
+    })()
+
+  })
+
+}(window.jQuery);/* ==========================================================
+ * bootstrap-alert.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#alerts
+ * ==========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* ALERT CLASS DEFINITION
+  * ====================== */
+
+  var dismiss = '[data-dismiss="alert"]'
+    , Alert = function (el) {
+        $(el).on('click', dismiss, this.close)
+      }
+
+  Alert.prototype.close = function (e) {
+    var $this = $(this)
+      , selector = $this.attr('data-target')
+      , $parent
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+    }
+
+    $parent = $(selector)
+
+    e && e.preventDefault()
+
+    $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
+
+    $parent.trigger(e = $.Event('close'))
+
+    if (e.isDefaultPrevented()) return
+
+    $parent.removeClass('in')
+
+    function removeElement() {
+      $parent
+        .trigger('closed')
+        .remove()
+    }
+
+    $.support.transition && $parent.hasClass('fade') ?
+      $parent.on($.support.transition.end, removeElement) :
+      removeElement()
+  }
+
+
+ /* ALERT PLUGIN DEFINITION
+  * ======================= */
+
+  $.fn.alert = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('alert')
+      if (!data) $this.data('alert', (data = new Alert(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.alert.Constructor = Alert
+
+
+ /* ALERT DATA-API
+  * ============== */
+
+  $(function () {
+    $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
+  })
+
+}(window.jQuery);/* ============================================================
+ * bootstrap-button.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#buttons
+ * ============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* BUTTON PUBLIC CLASS DEFINITION
+  * ============================== */
+
+  var Button = function (element, options) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.button.defaults, options)
+  }
+
+  Button.prototype.setState = function (state) {
+    var d = 'disabled'
+      , $el = this.$element
+      , data = $el.data()
+      , val = $el.is('input') ? 'val' : 'html'
+
+    state = state + 'Text'
+    data.resetText || $el.data('resetText', $el[val]())
+
+    $el[val](data[state] || this.options[state])
+
+    // push to event loop to allow forms to submit
+    setTimeout(function () {
+      state == 'loadingText' ?
+        $el.addClass(d).attr(d, d) :
+        $el.removeClass(d).removeAttr(d)
+    }, 0)
+  }
+
+  Button.prototype.toggle = function () {
+    var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+
+    $parent && $parent
+      .find('.active')
+      .removeClass('active')
+
+    this.$element.toggleClass('active')
+  }
+
+
+ /* BUTTON PLUGIN DEFINITION
+  * ======================== */
+
+  $.fn.button = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('button')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('button', (data = new Button(this, options)))
+      if (option == 'toggle') data.toggle()
+      else if (option) data.setState(option)
+    })
+  }
+
+  $.fn.button.defaults = {
+    loadingText: 'loading...'
+  }
+
+  $.fn.button.Constructor = Button
+
+
+ /* BUTTON DATA-API
+  * =============== */
+
+  $(function () {
+    $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
+      var $btn = $(e.target)
+      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+      $btn.button('toggle')
+    })
+  })
+
+}(window.jQuery);/* ==========================================================
+ * bootstrap-carousel.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#carousel
+ * ==========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* CAROUSEL CLASS DEFINITION
+  * ========================= */
+
+  var Carousel = function (element, options) {
+    this.$element = $(element)
+    this.options = options
+    this.options.slide && this.slide(this.options.slide)
+    this.options.pause == 'hover' && this.$element
+      .on('mouseenter', $.proxy(this.pause, this))
+      .on('mouseleave', $.proxy(this.cycle, this))
+  }
+
+  Carousel.prototype = {
+
+    cycle: function (e) {
+      if (!e) this.paused = false
+      this.options.interval
+        && !this.paused
+        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      return this
+    }
+
+  , to: function (pos) {
+      var $active = this.$element.find('.active')
+        , children = $active.parent().children()
+        , activePos = children.index($active)
+        , that = this
+
+      if (pos > (children.length - 1) || pos < 0) return
+
+      if (this.sliding) {
+        return this.$element.one('slid', function () {
+          that.to(pos)
+        })
+      }
+
+      if (activePos == pos) {
+        return this.pause().cycle()
+      }
+
+      return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
+    }
+
+  , pause: function (e) {
+      if (!e) this.paused = true
+      clearInterval(this.interval)
+      this.interval = null
+      return this
+    }
+
+  , next: function () {
+      if (this.sliding) return
+      return this.slide('next')
+    }
+
+  , prev: function () {
+      if (this.sliding) return
+      return this.slide('prev')
+    }
+
+  , slide: function (type, next) {
+      var $active = this.$element.find('.active')
+        , $next = next || $active[type]()
+        , isCycling = this.interval
+        , direction = type == 'next' ? 'left' : 'right'
+        , fallback  = type == 'next' ? 'first' : 'last'
+        , that = this
+        , e = $.Event('slide')
+
+      this.sliding = true
+
+      isCycling && this.pause()
+
+      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+
+      if ($next.hasClass('active')) return
+
+      if ($.support.transition && this.$element.hasClass('slide')) {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $next.addClass(type)
+        $next[0].offsetWidth // force reflow
+        $active.addClass(direction)
+        $next.addClass(direction)
+        this.$element.one($.support.transition.end, function () {
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
+          that.sliding = false
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+      } else {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $active.removeClass('active')
+        $next.addClass('active')
+        this.sliding = false
+        this.$element.trigger('slid')
+      }
+
+      isCycling && this.cycle()
+
+      return this
+    }
+
+  }
+
+
+ /* CAROUSEL PLUGIN DEFINITION
+  * ========================== */
+
+  $.fn.carousel = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('carousel')
+        , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
+      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
+      if (typeof option == 'number') data.to(option)
+      else if (typeof option == 'string' || (option = options.slide)) data[option]()
+      else if (options.interval) data.cycle()
+    })
+  }
+
+  $.fn.carousel.defaults = {
+    interval: 5000
+  , pause: 'hover'
+  }
+
+  $.fn.carousel.Constructor = Carousel
+
+
+ /* CAROUSEL DATA-API
+  * ================= */
+
+  $(function () {
+    $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
+      var $this = $(this), href
+        , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+        , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
+      $target.carousel(options)
+      e.preventDefault()
+    })
+  })
+
+}(window.jQuery);/* =============================================================
+ * bootstrap-collapse.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#collapse
+ * =============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* COLLAPSE PUBLIC CLASS DEFINITION
+  * ================================ */
+
+  var Collapse = function (element, options) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.collapse.defaults, options)
+
+    if (this.options.parent) {
+      this.$parent = $(this.options.parent)
+    }
+
+    this.options.toggle && this.toggle()
+  }
+
+  Collapse.prototype = {
+
+    constructor: Collapse
+
+  , dimension: function () {
+      var hasWidth = this.$element.hasClass('width')
+      return hasWidth ? 'width' : 'height'
+    }
+
+  , show: function () {
+      var dimension
+        , scroll
+        , actives
+        , hasData
+
+      if (this.transitioning) return
+
+      dimension = this.dimension()
+      scroll = $.camelCase(['scroll', dimension].join('-'))
+      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
+
+      if (actives && actives.length) {
+        hasData = actives.data('collapse')
+        if (hasData && hasData.transitioning) return
+        actives.collapse('hide')
+        hasData || actives.data('collapse', null)
+      }
+
+      this.$element[dimension](0)
+      this.transition('addClass', $.Event('show'), 'shown')
+      this.$element[dimension](this.$element[0][scroll])
+    }
+
+  , hide: function () {
+      var dimension
+      if (this.transitioning) return
+      dimension = this.dimension()
+      this.reset(this.$element[dimension]())
+      this.transition('removeClass', $.Event('hide'), 'hidden')
+      this.$element[dimension](0)
+    }
+
+  , reset: function (size) {
+      var dimension = this.dimension()
+
+      this.$element
+        .removeClass('collapse')
+        [dimension](size || 'auto')
+        [0].offsetWidth
+
+      this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
+
+      return this
+    }
+
+  , transition: function (method, startEvent, completeEvent) {
+      var that = this
+        , complete = function () {
+            if (startEvent.type == 'show') that.reset()
+            that.transitioning = 0
+            that.$element.trigger(completeEvent)
+          }
+
+      this.$element.trigger(startEvent)
+
+      if (startEvent.isDefaultPrevented()) return
+
+      this.transitioning = 1
+
+      this.$element[method]('in')
+
+      $.support.transition && this.$element.hasClass('collapse') ?
+        this.$element.one($.support.transition.end, complete) :
+        complete()
+    }
+
+  , toggle: function () {
+      this[this.$element.hasClass('in') ? 'hide' : 'show']()
+    }
+
+  }
+
+
+ /* COLLAPSIBLE PLUGIN DEFINITION
+  * ============================== */
+
+  $.fn.collapse = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('collapse')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.collapse.defaults = {
+    toggle: true
+  }
+
+  $.fn.collapse.Constructor = Collapse
+
+
+ /* COLLAPSIBLE DATA-API
+  * ==================== */
+
+  $(function () {
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
+      var $this = $(this), href
+        , target = $this.attr('data-target')
+          || e.preventDefault()
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $(target).collapse(option)
+    })
+  })
+
+}(window.jQuery);/* ============================================================
+ * bootstrap-dropdown.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#dropdowns
+ * ============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* DROPDOWN CLASS DEFINITION
+  * ========================= */
+
+  var toggle = '[data-toggle="dropdown"]'
+    , Dropdown = function (element) {
+        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+        $('html').on('click.dropdown.data-api', function () {
+          $el.parent().removeClass('open')
+        })
+      }
+
+  Dropdown.prototype = {
+
+    constructor: Dropdown
+
+  , toggle: function (e) {
+      var $this = $(this)
+        , $parent
+        , selector
+        , isActive
+
+      if ($this.is('.disabled, :disabled')) return
+
+      selector = $this.attr('data-target')
+
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      $parent = $(selector)
+      $parent.length || ($parent = $this.parent())
+
+      isActive = $parent.hasClass('open')
+
+      clearMenus()
+
+      if (!isActive) $parent.toggleClass('open')
+
+      return false
+    }
+
+  }
+
+  function clearMenus() {
+    $(toggle).parent().removeClass('open')
+  }
+
+
+  /* DROPDOWN PLUGIN DEFINITION
+   * ========================== */
+
+  $.fn.dropdown = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('dropdown')
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  /* APPLY TO STANDARD DROPDOWN ELEMENTS
+   * =================================== */
+
+  $(function () {
+    $('html').on('click.dropdown.data-api', clearMenus)
+    $('body')
+      .on('click.dropdown', '.dropdown form', function (e) { e.stopPropagation() })
+      .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+  })
+
+}(window.jQuery);/* =========================================================
+ * bootstrap-modal.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#modals
+ * =========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* MODAL CLASS DEFINITION
+  * ====================== */
+
+  var Modal = function (content, options) {
+    this.options = options
+    this.$element = $(content)
+      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+  }
+
+  Modal.prototype = {
+
+      constructor: Modal
+
+    , toggle: function () {
+        return this[!this.isShown ? 'show' : 'hide']()
+      }
+
+    , show: function () {
+        var that = this
+          , e = $.Event('show')
+
+        this.$element.trigger(e)
+
+        if (this.isShown || e.isDefaultPrevented()) return
+
+        $('body').addClass('modal-open')
+
+        this.isShown = true
+
+        escape.call(this)
+        backdrop.call(this, function () {
+          var transition = $.support.transition && that.$element.hasClass('fade')
+
+          if (!that.$element.parent().length) {
+            that.$element.appendTo(document.body) //don't move modals dom position
+          }
+
+          that.$element
+            .show()
+
+          if (transition) {
+            that.$element[0].offsetWidth // force reflow
+          }
+
+          that.$element.addClass('in')
+
+          transition ?
+            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
+            that.$element.trigger('shown')
+
+        })
+      }
+
+    , hide: function (e) {
+        e && e.preventDefault()
+
+        var that = this
+
+        e = $.Event('hide')
+
+        this.$element.trigger(e)
+
+        if (!this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = false
+
+        $('body').removeClass('modal-open')
+
+        escape.call(this)
+
+        this.$element.removeClass('in')
+
+        $.support.transition && this.$element.hasClass('fade') ?
+          hideWithTransition.call(this) :
+          hideModal.call(this)
+      }
+
+  }
+
+
+ /* MODAL PRIVATE METHODS
+  * ===================== */
+
+  function hideWithTransition() {
+    var that = this
+      , timeout = setTimeout(function () {
+          that.$element.off($.support.transition.end)
+          hideModal.call(that)
+        }, 500)
+
+    this.$element.one($.support.transition.end, function () {
+      clearTimeout(timeout)
+      hideModal.call(that)
+    })
+  }
+
+  function hideModal(that) {
+    this.$element
+      .hide()
+      .trigger('hidden')
+
+    backdrop.call(this)
+  }
+
+  function backdrop(callback) {
+    var that = this
+      , animate = this.$element.hasClass('fade') ? 'fade' : ''
+
+    if (this.isShown && this.options.backdrop) {
+      var doAnimate = $.support.transition && animate
+
+      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+        .appendTo(document.body)
+
+      if (this.options.backdrop != 'static') {
+        this.$backdrop.click($.proxy(this.hide, this))
+      }
+
+      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+
+      this.$backdrop.addClass('in')
+
+      doAnimate ?
+        this.$backdrop.one($.support.transition.end, callback) :
+        callback()
+
+    } else if (!this.isShown && this.$backdrop) {
+      this.$backdrop.removeClass('in')
+
+      $.support.transition && this.$element.hasClass('fade')?
+        this.$backdrop.one($.support.transition.end, $.proxy(removeBackdrop, this)) :
+        removeBackdrop.call(this)
+
+    } else if (callback) {
+      callback()
+    }
+  }
+
+  function removeBackdrop() {
+    this.$backdrop.remove()
+    this.$backdrop = null
+  }
+
+  function escape() {
+    var that = this
+    if (this.isShown && this.options.keyboard) {
+      $(document).on('keyup.dismiss.modal', function ( e ) {
+        e.which == 27 && that.hide()
+      })
+    } else if (!this.isShown) {
+      $(document).off('keyup.dismiss.modal')
+    }
+  }
+
+
+ /* MODAL PLUGIN DEFINITION
+  * ======================= */
+
+  $.fn.modal = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('modal')
+        , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
+      if (!data) $this.data('modal', (data = new Modal(this, options)))
+      if (typeof option == 'string') data[option]()
+      else if (options.show) data.show()
+    })
+  }
+
+  $.fn.modal.defaults = {
+      backdrop: true
+    , keyboard: true
+    , show: true
+  }
+
+  $.fn.modal.Constructor = Modal
+
+
+ /* MODAL DATA-API
+  * ============== */
+
+  $(function () {
+    $('body').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
+      var $this = $(this), href
+        , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+        , option = $target.data('modal') ? 'toggle' : $.extend({}, $target.data(), $this.data())
+
+      e.preventDefault()
+      $target.modal(option)
+    })
+  })
+
+}(window.jQuery);/* ===========================================================
+ * bootstrap-tooltip.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#tooltips
+ * Inspired by the original jQuery.tipsy by Jason Frame
+ * ===========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* TOOLTIP PUBLIC CLASS DEFINITION
+  * =============================== */
+
+  var Tooltip = function (element, options) {
+    this.init('tooltip', element, options)
+  }
+
+  Tooltip.prototype = {
+
+    constructor: Tooltip
+
+  , init: function (type, element, options) {
+      var eventIn
+        , eventOut
+
+      this.type = type
+      this.$element = $(element)
+      this.options = this.getOptions(options)
+      this.enabled = true
+
+      if (this.options.trigger != 'manual') {
+        eventIn  = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
+        eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
+        this.$element.on(eventIn, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+      }
+
+      this.options.selector ?
+        (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+        this.fixTitle()
+    }
+
+  , getOptions: function (options) {
+      options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
+
+      if (options.delay && typeof options.delay == 'number') {
+        options.delay = {
+          show: options.delay
+        , hide: options.delay
+        }
+      }
+
+      return options
+    }
+
+  , enter: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+
+      if (!self.options.delay || !self.options.delay.show) return self.show()
+
+      clearTimeout(this.timeout)
+      self.hoverState = 'in'
+      this.timeout = setTimeout(function() {
+        if (self.hoverState == 'in') self.show()
+      }, self.options.delay.show)
+    }
+
+  , leave: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+
+      if (this.timeout) clearTimeout(this.timeout)
+      if (!self.options.delay || !self.options.delay.hide) return self.hide()
+
+      self.hoverState = 'out'
+      this.timeout = setTimeout(function() {
+        if (self.hoverState == 'out') self.hide()
+      }, self.options.delay.hide)
+    }
+
+  , show: function () {
+      var $tip
+        , inside
+        , pos
+        , actualWidth
+        , actualHeight
+        , placement
+        , tp
+
+      if (this.hasContent() && this.enabled) {
+        $tip = this.tip()
+        this.setContent()
+
+        if (this.options.animation) {
+          $tip.addClass('fade')
+        }
+
+        placement = typeof this.options.placement == 'function' ?
+          this.options.placement.call(this, $tip[0], this.$element[0]) :
+          this.options.placement
+
+        inside = /in/.test(placement)
+
+        $tip
+          .remove()
+          .css({ top: 0, left: 0, display: 'block' })
+          .appendTo(inside ? this.$element : document.body)
+
+        pos = this.getPosition(inside)
+
+        actualWidth = $tip[0].offsetWidth
+        actualHeight = $tip[0].offsetHeight
+
+        switch (inside ? placement.split(' ')[1] : placement) {
+          case 'bottom':
+            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+            break
+          case 'top':
+            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+            break
+          case 'left':
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+            break
+          case 'right':
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+            break
+        }
+
+        $tip
+          .css(tp)
+          .addClass(placement)
+          .addClass('in')
+      }
+    }
+
+  , isHTML: function(text) {
+      // html string detection logic adapted from jQuery
+      return typeof text != 'string'
+        || ( text.charAt(0) === "<"
+          && text.charAt( text.length - 1 ) === ">"
+          && text.length >= 3
+        ) || /^(?:[^<]*<[\w\W]+>[^>]*$)/.exec(text)
+    }
+
+  , setContent: function () {
+      var $tip = this.tip()
+        , title = this.getTitle()
+
+      $tip.find('.tooltip-inner')[this.isHTML(title) ? 'html' : 'text'](title)
+      $tip.removeClass('fade in top bottom left right')
+    }
+
+  , hide: function () {
+      var that = this
+        , $tip = this.tip()
+
+      $tip.removeClass('in')
+
+      function removeWithAnimation() {
+        var timeout = setTimeout(function () {
+          $tip.off($.support.transition.end).remove()
+        }, 500)
+
+        $tip.one($.support.transition.end, function () {
+          clearTimeout(timeout)
+          $tip.remove()
+        })
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+        removeWithAnimation() :
+        $tip.remove()
+    }
+
+  , fixTitle: function () {
+      var $e = this.$element
+      if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
+        $e.attr('data-original-title', $e.attr('title') || '').removeAttr('title')
+      }
+    }
+
+  , hasContent: function () {
+      return this.getTitle()
+    }
+
+  , getPosition: function (inside) {
+      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+        width: this.$element[0].offsetWidth
+      , height: this.$element[0].offsetHeight
+      })
+    }
+
+  , getTitle: function () {
+      var title
+        , $e = this.$element
+        , o = this.options
+
+      title = $e.attr('data-original-title')
+        || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+
+      return title
+    }
+
+  , tip: function () {
+      return this.$tip = this.$tip || $(this.options.template)
+    }
+
+  , validate: function () {
+      if (!this.$element[0].parentNode) {
+        this.hide()
+        this.$element = null
+        this.options = null
+      }
+    }
+
+  , enable: function () {
+      this.enabled = true
+    }
+
+  , disable: function () {
+      this.enabled = false
+    }
+
+  , toggleEnabled: function () {
+      this.enabled = !this.enabled
+    }
+
+  , toggle: function () {
+      this[this.tip().hasClass('in') ? 'hide' : 'show']()
+    }
+
+  }
+
+
+ /* TOOLTIP PLUGIN DEFINITION
+  * ========================= */
+
+  $.fn.tooltip = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('tooltip')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.tooltip.Constructor = Tooltip
+
+  $.fn.tooltip.defaults = {
+    animation: true
+  , placement: 'top'
+  , selector: false
+  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , trigger: 'hover'
+  , title: ''
+  , delay: 0
+  }
+
+}(window.jQuery);
+/* ===========================================================
+ * bootstrap-popover.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#popovers
+ * ===========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =========================================================== */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* POPOVER PUBLIC CLASS DEFINITION
+  * =============================== */
+
+  var Popover = function ( element, options ) {
+    this.init('popover', element, options)
+  }
+
+
+  /* NOTE: POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js
+     ========================================== */
+
+  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype, {
+
+    constructor: Popover
+
+  , setContent: function () {
+      var $tip = this.tip()
+        , title = this.getTitle()
+        , content = this.getContent()
+
+      $tip.find('.popover-title')[this.isHTML(title) ? 'html' : 'text'](title)
+      $tip.find('.popover-content > *')[this.isHTML(content) ? 'html' : 'text'](content)
+
+      $tip.removeClass('fade top bottom left right in')
+    }
+
+  , hasContent: function () {
+      return this.getTitle() || this.getContent()
+    }
+
+  , getContent: function () {
+      var content
+        , $e = this.$element
+        , o = this.options
+
+      content = $e.attr('data-content')
+        || (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
+
+      return content
+    }
+
+  , tip: function () {
+      if (!this.$tip) {
+        this.$tip = $(this.options.template)
+      }
+      return this.$tip
+    }
+
+  })
+
+
+ /* POPOVER PLUGIN DEFINITION
+  * ======================= */
+
+  $.fn.popover = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('popover')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('popover', (data = new Popover(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.popover.Constructor = Popover
+
+  $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
+    placement: 'right'
+  , content: ''
+  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+  })
+
+}(window.jQuery);/* =============================================================
+ * bootstrap-scrollspy.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#scrollspy
+ * =============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================== */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+  /* SCROLLSPY CLASS DEFINITION
+   * ========================== */
+
+  function ScrollSpy( element, options) {
+    var process = $.proxy(this.process, this)
+      , $element = $(element).is('body') ? $(window) : $(element)
+      , href
+    this.options = $.extend({}, $.fn.scrollspy.defaults, options)
+    this.$scrollElement = $element.on('scroll.scroll.data-api', process)
+    this.selector = (this.options.target
+      || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+      || '') + ' .nav li > a'
+    this.$body = $('body')
+    this.refresh()
+    this.process()
+  }
+
+  ScrollSpy.prototype = {
+
+      constructor: ScrollSpy
+
+    , refresh: function () {
+        var self = this
+          , $targets
+
+        this.offsets = $([])
+        this.targets = $([])
+
+        $targets = this.$body
+          .find(this.selector)
+          .map(function () {
+            var $el = $(this)
+              , href = $el.data('target') || $el.attr('href')
+              , $href = /^#\w/.test(href) && $(href)
+            return ( $href
+              && href.length
+              && [[ $href.position().top, href ]] ) || null
+          })
+          .sort(function (a, b) { return a[0] - b[0] })
+          .each(function () {
+            self.offsets.push(this[0])
+            self.targets.push(this[1])
+          })
+      }
+
+    , process: function () {
+        var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
+          , scrollHeight = this.$scrollElement[0].scrollHeight || this.$body[0].scrollHeight
+          , maxScroll = scrollHeight - this.$scrollElement.height()
+          , offsets = this.offsets
+          , targets = this.targets
+          , activeTarget = this.activeTarget
+          , i
+
+        if (scrollTop >= maxScroll) {
+          return activeTarget != (i = targets.last()[0])
+            && this.activate ( i )
+        }
+
+        for (i = offsets.length; i--;) {
+          activeTarget != targets[i]
+            && scrollTop >= offsets[i]
+            && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+            && this.activate( targets[i] )
+        }
+      }
+
+    , activate: function (target) {
+        var active
+          , selector
+
+        this.activeTarget = target
+
+        $(this.selector)
+          .parent('.active')
+          .removeClass('active')
+
+        selector = this.selector
+          + '[data-target="' + target + '"],'
+          + this.selector + '[href="' + target + '"]'
+
+        active = $(selector)
+          .parent('li')
+          .addClass('active')
+
+        if (active.parent('.dropdown-menu'))  {
+          active = active.closest('li.dropdown').addClass('active')
+        }
+
+        active.trigger('activate')
+      }
+
+  }
+
+
+ /* SCROLLSPY PLUGIN DEFINITION
+  * =========================== */
+
+  $.fn.scrollspy = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('scrollspy')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.scrollspy.Constructor = ScrollSpy
+
+  $.fn.scrollspy.defaults = {
+    offset: 10
+  }
+
+
+ /* SCROLLSPY DATA-API
+  * ================== */
+
+  $(function () {
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this)
+      $spy.scrollspy($spy.data())
+    })
+  })
+
+}(window.jQuery);/* ========================================================
+ * bootstrap-tab.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#tabs
+ * ========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ======================================================== */
+
+
+!function ($) {
+
+   // jshint ;_;
+
+
+ /* TAB CLASS DEFINITION
+  * ==================== */
+
+  var Tab = function ( element ) {
+    this.element = $(element)
+  }
+
+  Tab.prototype = {
+
+    constructor: Tab
+
+  , show: function () {
+      var $this = this.element
+        , $ul = $this.closest('ul:not(.dropdown-menu)')
+        , selector = $this.attr('data-target')
+        , previous
+        , $target
+        , e
+
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      if ( $this.parent('li').hasClass('active') ) return
+
+      previous = $ul.find('.active a').last()[0]
+
+      e = $.Event('show', {
+        relatedTarget: previous
+      })
+
+      $this.trigger(e)
+
+      if (e.isDefaultPrevented()) return
+
+      $target = $(selector)
+
+      this.activate($this.parent('li'), $ul)
+      this.activate($target, $target.parent(), function () {
+        $this.trigger({
+          type: 'shown'
+        , relatedTarget: previous
+        })
+      })
+    }
+
+  , activate: function ( element, container, callback) {
+      var $active = container.find('> .active')
+        , transition = callback
+            && $.support.transition
+            && $active.hasClass('fade')
+
+      function next() {
+        $active
+          .removeClass('active')
+          .find('> .dropdown-menu > .active')
+          .removeClass('active')
+
+        element.addClass('active')
+
+        if (transition) {
+          element[0].offsetWidth // reflow for transition
+          element.addClass('in')
+        } else {
+          element.removeClass('fade')
+        }
+
+        if ( element.parent('.dropdown-menu') ) {
+          element.closest('li.dropdown').addClass('active')
+        }
+
+        callback && callback()
+      }
+
+      transition ?
+        $active.one($.support.transition.end, next) :
+        next()
+
+      $active.removeClass('in')
+    }
+  }
+
+
+ /* TAB PLUGIN DEFINITION
+  * ===================== */
+
+  $.fn.tab = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('tab')
+      if (!data) $this.data('tab', (data = new Tab(this)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.tab.Constructor = Tab
+
+
+ /* TAB DATA-API
+  * ============ */
+
+  $(function () {
+    $('body').on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+  })
+
+}(window.jQuery);/* =============================================================
+ * bootstrap-typeahead.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#typeahead
+ * =============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+!function($){
+
+   // jshint ;_;
+
+
+ /* TYPEAHEAD PUBLIC CLASS DEFINITION
+  * ================================= */
+
+  var Typeahead = function (element, options) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.typeahead.defaults, options)
+    this.matcher = this.options.matcher || this.matcher
+    this.sorter = this.options.sorter || this.sorter
+    this.highlighter = this.options.highlighter || this.highlighter
+    this.updater = this.options.updater || this.updater
+    this.$menu = $(this.options.menu).appendTo('body')
+    this.source = this.options.source
+    this.shown = false
+    this.listen()
+  }
+
+  Typeahead.prototype = {
+
+    constructor: Typeahead
+
+  , select: function () {
+      var val = this.$menu.find('.active').attr('data-value')
+      this.$element
+        .val(this.updater(val))
+        .change()
+      return this.hide()
+    }
+
+  , updater: function (item) {
+      return item
+    }
+
+  , show: function () {
+      var pos = $.extend({}, this.$element.offset(), {
+        height: this.$element[0].offsetHeight
+      })
+
+      this.$menu.css({
+        top: pos.top + pos.height
+      , left: pos.left
+      })
+
+      this.$menu.show()
+      this.shown = true
+      return this
+    }
+
+  , hide: function () {
+      this.$menu.hide()
+      this.shown = false
+      return this
+    }
+
+  , lookup: function (event) {
+      var that = this
+        , items
+        , q
+
+      this.query = this.$element.val()
+
+      if (!this.query) {
+        return this.shown ? this.hide() : this
+      }
+
+      items = $.grep(this.source, function (item) {
+        return that.matcher(item)
+      })
+
+      items = this.sorter(items)
+
+      if (!items.length) {
+        return this.shown ? this.hide() : this
+      }
+
+      return this.render(items.slice(0, this.options.items)).show()
+    }
+
+  , matcher: function (item) {
+      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+    }
+
+  , sorter: function (items) {
+      var beginswith = []
+        , caseSensitive = []
+        , caseInsensitive = []
+        , item
+
+      while (item = items.shift()) {
+        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        else caseInsensitive.push(item)
+      }
+
+      return beginswith.concat(caseSensitive, caseInsensitive)
+    }
+
+  , highlighter: function (item) {
+      var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+        return '<strong>' + match + '</strong>'
+      })
+    }
+
+  , render: function (items) {
+      var that = this
+
+      items = $(items).map(function (i, item) {
+        i = $(that.options.item).attr('data-value', item)
+        i.find('a').html(that.highlighter(item))
+        return i[0]
+      })
+
+      items.first().addClass('active')
+      this.$menu.html(items)
+      return this
+    }
+
+  , next: function (event) {
+      var active = this.$menu.find('.active').removeClass('active')
+        , next = active.next()
+
+      if (!next.length) {
+        next = $(this.$menu.find('li')[0])
+      }
+
+      next.addClass('active')
+    }
+
+  , prev: function (event) {
+      var active = this.$menu.find('.active').removeClass('active')
+        , prev = active.prev()
+
+      if (!prev.length) {
+        prev = this.$menu.find('li').last()
+      }
+
+      prev.addClass('active')
+    }
+
+  , listen: function () {
+      this.$element
+        .on('blur',     $.proxy(this.blur, this))
+        .on('keypress', $.proxy(this.keypress, this))
+        .on('keyup',    $.proxy(this.keyup, this))
+
+      if ($.browser.webkit || $.browser.msie) {
+        this.$element.on('keydown', $.proxy(this.keypress, this))
+      }
+
+      this.$menu
+        .on('click', $.proxy(this.click, this))
+        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+    }
+
+  , keyup: function (e) {
+      switch(e.keyCode) {
+        case 40: // down arrow
+        case 38: // up arrow
+          break
+
+        case 9: // tab
+        case 13: // enter
+          if (!this.shown) return
+          this.select()
+          break
+
+        case 27: // escape
+          if (!this.shown) return
+          this.hide()
+          break
+
+        default:
+          this.lookup()
+      }
+
+      e.stopPropagation()
+      e.preventDefault()
+  }
+
+  , keypress: function (e) {
+      if (!this.shown) return
+
+      switch(e.keyCode) {
+        case 9: // tab
+        case 13: // enter
+        case 27: // escape
+          e.preventDefault()
+          break
+
+        case 38: // up arrow
+          if (e.type != 'keydown') break
+          e.preventDefault()
+          this.prev()
+          break
+
+        case 40: // down arrow
+          if (e.type != 'keydown') break
+          e.preventDefault()
+          this.next()
+          break
+      }
+
+      e.stopPropagation()
+    }
+
+  , blur: function (e) {
+      var that = this
+      setTimeout(function () { that.hide() }, 150)
+    }
+
+  , click: function (e) {
+      e.stopPropagation()
+      e.preventDefault()
+      this.select()
+    }
+
+  , mouseenter: function (e) {
+      this.$menu.find('.active').removeClass('active')
+      $(e.currentTarget).addClass('active')
+    }
+
+  }
+
+
+  /* TYPEAHEAD PLUGIN DEFINITION
+   * =========================== */
+
+  $.fn.typeahead = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('typeahead')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('typeahead', (data = new Typeahead(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.typeahead.defaults = {
+    source: []
+  , items: 8
+  , menu: '<ul class="typeahead dropdown-menu"></ul>'
+  , item: '<li><a href="#"></a></li>'
+  }
+
+  $.fn.typeahead.Constructor = Typeahead
+
+
+ /* TYPEAHEAD DATA-API
+  * ================== */
+
+  $(function () {
+    $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
+      var $this = $(this)
+      if ($this.data('typeahead')) return
+      e.preventDefault()
+      $this.typeahead($this.data())
+    })
+  })
+
+}(window.jQuery);
+define("bootstrap", function(){});
+
+//
+// LESS - Leaner CSS v1.3.0
+// http://lesscss.org
+// 
+// Copyright (c) 2009-2011, Alexis Sellier
+// Licensed under the Apache 2.0 License.
+//
+(function(a,b){function c(b){return a.less[b.split("/")[1]]}function l(){var a=document.getElementsByTagName("style");for(var b=0;b<a.length;b++)a[b].type.match(j)&&(new d.Parser).parse(a[b].innerHTML||"",function(c,d){var e=d.toCSS(),f=a[b];f.type="text/css",f.styleSheet?f.styleSheet.cssText=e:f.innerHTML=e})}function m(a,b){for(var c=0;c<d.sheets.length;c++)n(d.sheets[c],a,b,d.sheets.length-(c+1))}function n(b,c,e,f){var h=a.location.href.replace(/[#?].*$/,""),i=b.href.replace(/\?.*$/,""),j=g&&g.getItem(i),k=g&&g.getItem(i+":timestamp"),l={css:j,timestamp:k};/^(https?|file):/.test(i)||(i.charAt(0)=="/"?i=a.location.protocol+"//"+a.location.host+i:i=h.slice(0,h.lastIndexOf("/")+1)+i);var m=i.match(/([^\/]+)$/)[1];q(b.href,b.type,function(a,g){if(!e&&l&&g&&(new Date(g)).valueOf()===(new Date(l.timestamp)).valueOf())p(l.css,b),c(null,null,a,b,{local:!0,remaining:f});else try{(new d.Parser({optimization:d.optimization,paths:[i.replace(/[\w\.-]+$/,"")],mime:b.type,filename:m})).parse(a,function(d,e){if(d)return u(d,i);try{c(d,e,a,b,{local:!1,lastModified:g,remaining:f}),s(document.getElementById("less-error-message:"+o(i)))}catch(d){u(d,i)}})}catch(h){u(h,i)}},function(a,b){throw new Error("Couldn't load "+b+" ("+a+")")})}function o(a){return a.replace(/^[a-z]+:\/\/?[^\/]+/,"").replace(/^\//,"").replace(/\?.*$/,"").replace(/\.[^\.\/]+$/,"").replace(/[^\.\w-]+/g,"-").replace(/\./g,":")}function p(a,b,c){var d,e=b.href?b.href.replace(/\?.*$/,""):"",f="less:"+(b.title||o(e));(d=document.getElementById(f))===null&&(d=document.createElement("style"),d.type="text/css",d.media=b.media||"screen",d.id=f,document.getElementsByTagName("head")[0].appendChild(d));if(d.styleSheet)try{d.styleSheet.cssText=a}catch(h){throw new Error("Couldn't reassign styleSheet.cssText.")}else(function(a){d.childNodes.length>0?d.firstChild.nodeValue!==a.nodeValue&&d.replaceChild(a,d.firstChild):d.appendChild(a)})(document.createTextNode(a));c&&g&&(t("saving "+e+" to cache."),g.setItem(e,a),g.setItem(e+":timestamp",c))}function q(a,b,c,e){function i(b,c,d){b.status>=200&&b.status<300?c(b.responseText,b.getResponseHeader("Last-Modified")):typeof d=="function"&&d(b.status,a)}var g=r(),h=f?!1:d.async;typeof g.overrideMimeType=="function"&&g.overrideMimeType("text/css"),g.open("GET",a,h),g.setRequestHeader("Accept",b||"text/x-less, text/css; q=0.9, */*; q=0.5"),g.send(null),f?g.status===0||g.status>=200&&g.status<300?c(g.responseText):e(g.status,a):h?g.onreadystatechange=function(){g.readyState==4&&i(g,c,e)}:i(g,c,e)}function r(){if(a.XMLHttpRequest)return new XMLHttpRequest;try{return new ActiveXObject("MSXML2.XMLHTTP.3.0")}catch(b){return t("browser doesn't support AJAX."),null}}function s(a){return a&&a.parentNode.removeChild(a)}function t(a){d.env=="development"&&typeof console!="undefined"&&console.log("less: "+a)}function u(a,b){var c="less-error-message:"+o(b),e='<li><label>{line}</label><pre class="{class}">{content}</pre></li>',f=document.createElement("div"),g,h,i=[],j=a.filename||b;f.id=c,f.className="less-error-message",h="<h3>"+(a.message||"There is an error in your .less file")+"</h3>"+'<p>in <a href="'+j+'">'+j+"</a> ";var k=function(a,b,c){a.extract[b]&&i.push(e.replace(/\{line\}/,parseInt(a.line)+(b-1)).replace(/\{class\}/,c).replace(/\{content\}/,a.extract[b]))};a.stack?h+="<br/>"+a.stack.split("\n").slice(1).join("<br/>"):a.extract&&(k(a,0,""),k(a,1,"line"),k(a,2,""),h+="on line "+a.line+", column "+(a.column+1)+":</p>"+"<ul>"+i.join("")+"</ul>"),f.innerHTML=h,p([".less-error-message ul, .less-error-message li {","list-style-type: none;","margin-right: 15px;","padding: 4px 0;","margin: 0;","}",".less-error-message label {","font-size: 12px;","margin-right: 15px;","padding: 4px 0;","color: #cc7777;","}",".less-error-message pre {","color: #dd6666;","padding: 4px 0;","margin: 0;","display: inline-block;","}",".less-error-message pre.line {","color: #ff0000;","}",".less-error-message h3 {","font-size: 20px;","font-weight: bold;","padding: 15px 0 5px 0;","margin: 0;","}",".less-error-message a {","color: #10a","}",".less-error-message .error {","color: red;","font-weight: bold;","padding-bottom: 2px;","border-bottom: 1px dashed red;","}"].join("\n"),{title:"error-message"}),f.style.cssText=["font-family: Arial, sans-serif","border: 1px solid #e00","background-color: #eee","border-radius: 5px","-webkit-border-radius: 5px","-moz-border-radius: 5px","color: #e00","padding: 15px","margin-bottom: 15px"].join(";"),d.env=="development"&&(g=setInterval(function(){document.body&&(document.getElementById(c)?document.body.replaceChild(f,document.getElementById(c)):document.body.insertBefore(f,document.body.firstChild),clearInterval(g))},10))}typeof define=="function"&&define.amd&&define("less",[],function(){return d}),Array.isArray||(Array.isArray=function(a){return Object.prototype.toString.call(a)==="[object Array]"||a instanceof Array}),Array.prototype.forEach||(Array.prototype.forEach=function(a,b){var c=this.length>>>0;for(var d=0;d<c;d++)d in this&&a.call(b,this[d],d,this)}),Array.prototype.map||(Array.prototype.map=function(a){var b=this.length>>>0,c=new Array(b),d=arguments[1];for(var e=0;e<b;e++)e in this&&(c[e]=a.call(d,this[e],e,this));return c}),Array.prototype.filter||(Array.prototype.filter=function(a){var b=[],c=arguments[1];for(var d=0;d<this.length;d++)a.call(c,this[d])&&b.push(this[d]);return b}),Array.prototype.reduce||(Array.prototype.reduce=function(a){var b=this.length>>>0,c=0;if(b===0&&arguments.length===1)throw new TypeError;if(arguments.length>=2)var d=arguments[1];else do{if(c in this){d=this[c++];break}if(++c>=b)throw new TypeError}while(!0);for(;c<b;c++)c in this&&(d=a.call(null,d,this[c],c,this));return d}),Array.prototype.indexOf||(Array.prototype.indexOf=function(a){var b=this.length,c=arguments[1]||0;if(!b)return-1;if(c>=b)return-1;c<0&&(c+=b);for(;c<b;c++){if(!Object.prototype.hasOwnProperty.call(this,c))continue;if(a===this[c])return c}return-1}),Object.keys||(Object.keys=function(a){var b=[];for(var c in a)Object.prototype.hasOwnProperty.call(a,c)&&b.push(c);return b}),String.prototype.trim||(String.prototype.trim=function(){return String(this).replace(/^\s\s*/,"").replace(/\s\s*$/,"")});var d,e;typeof environment=="object"&&{}.toString.call(environment)==="[object Environment]"?(typeof a=="undefined"?d={}:d=a.less={},e=d.tree={},d.mode="rhino"):typeof a=="undefined"?(d=exports,e=c("./tree"),d.mode="node"):(typeof a.less=="undefined"&&(a.less={}),d=a.less,e=a.less.tree={},d.mode="browser"),d.Parser=function v(a){function q(){h=k[g],i=f,l=f}function r(){k[g]=h,f=i,l=f}function s(){f>l&&(k[g]=k[g].slice(f-l),l=f)}function t(a){var c,d,e,h,i,j,n,o;if(a instanceof Function)return a.call(m.parsers);if(typeof a=="string")c=b.charAt(f)===a?a:null,e=1,s();else{s();if(c=a.exec(k[g]))e=c[0].length;else return null}if(c){o=f+=e,j=f+k[g].length-e;while(f<j){h=b.charCodeAt(f);if(h!==32&&h!==10&&h!==9)break;f++}return k[g]=k[g].slice(e+(f-o)),l=f,k[g].length===0&&g<k.length-1&&g++,typeof c=="string"?c:c.length===1?c[0]:c}}function u(a,c){var d=t(a);if(!d)v(c||(typeof a=="string"?"expected '"+a+"' got '"+b.charAt(f)+"'":"unexpected token"));else return d}function v(a,b){throw{index:f,type:b||"Syntax",message:a}}function w(a){return typeof a=="string"?b.charAt(f)===a:a.test(k[g])?!0:!1}function x(a){return d.mode==="node"?c("path").basename(a):a.match(/[^\/]+$/)[0]}function y(a,c){return a.filename&&c.filename&&a.filename!==c.filename?m.imports.contents[x(a.filename)]:b}function z(a,b){for(var c=a,d=-1;c>=0&&b.charAt(c)!=="\n";c--)d++;return{line:typeof a=="number"?(b.slice(0,a).match(/\n/g)||"").length:null,column:d}}function A(a,b){var c=y(a,b),d=z(a.index,c),e=d.line,f=d.column,g=c.split("\n");this.type=a.type||"Syntax",this.message=a.message,this.filename=a.filename||b.filename,this.index=a.index,this.line=typeof e=="number"?e+1:null,this.callLine=a.call&&z(a.call,c).line+1,this.callExtract=g[z(a.call,c).line],this.stack=a.stack,this.column=f,this.extract=[g[e-1],g[e],g[e+1]]}var b,f,g,h,i,j,k,l,m,n=this,o=function(){},p=this.imports={paths:a&&a.paths||[],queue:[],files:{},contents:{},mime:a&&a.mime,error:null,push:function(b,c){var e=this;this.queue.push(b),d.Parser.importer(b,this.paths,function(a,d,f){e.queue.splice(e.queue.indexOf(b),1),e.files[b]=d,e.contents[b]=f,a&&!e.error&&(e.error=a),c(a,d),e.queue.length===0&&o()},a)}};return this.env=a=a||{},this.optimization="optimization"in this.env?this.env.optimization:1,this.env.filename=this.env.filename||null,m={imports:p,parse:function(h,i){var n,p,q,r,s,u,v=[],w,x=null;f=g=l=j=0,b=h.replace(/\r\n/g,"\n"),k=function(c){var d=0,e=/[^"'`\{\}\/\(\)\\]+/g,f=/\/\*(?:[^*]|\*+[^\/*])*\*+\/|\/\/.*/g,g=/"((?:[^"\\\r\n]|\\.)*)"|'((?:[^'\\\r\n]|\\.)*)'|`((?:[^`\\\r\n]|\\.)*)`/g,h=0,i,j=c[0],k;for(var l=0,m,n;l<b.length;l++){e.lastIndex=l,(i=e.exec(b))&&i.index===l&&(l+=i[0].length,j.push(i[0])),m=b.charAt(l),f.lastIndex=g.lastIndex=l,(i=g.exec(b))&&i.index===l&&(l+=i[0].length,j.push(i[0]),m=b.charAt(l)),!k&&m==="/"&&(n=b.charAt(l+1),(n==="/"||n==="*")&&(i=f.exec(b))&&i.index===l&&(l+=i[0].length,j.push(i[0]),m=b.charAt(l)));switch(m){case"{":if(!k){h++,j.push(m);break};case"}":if(!k){h--,j.push(m),c[++d]=j=[];break};case"(":if(!k){k=!0,j.push(m);break};case")":if(k){k=!1,j.push(m);break};default:j.push(m)}}return h>0&&(x=new A({index:l,type:"Parse",message:"missing closing `}`",filename:a.filename},a)),c.map(function(a){return a.join("")})}([[]]);if(x)return i(x);try{n=new e.Ruleset([],t(this.parsers.primary)),n.root=!0}catch(y){return i(new A(y,a))}n.toCSS=function(b){var f,g,h;return function(f,g){var h=[],i;f=f||{},typeof g=="object"&&!Array.isArray(g)&&(g=Object.keys(g).map(function(a){var b=g[a];return b instanceof e.Value||(b instanceof e.Expression||(b=new e.Expression([b])),b=new e.Value([b])),new e.Rule("@"+a,b,!1,0)}),h=[new e.Ruleset(null,g)]);try{var j=b.call(this,{frames:h}).toCSS([],{compress:f.compress||!1})}catch(k){throw new A(k,a)}if(i=m.imports.error)throw i instanceof A?i:new A(i,a);return f.yuicompress&&d.mode==="node"?c("./cssmin").compressor.cssmin(j):f.compress?j.replace(/(\s)+/g,"$1"):j}}(n.eval);if(f<b.length-1){f=j,u=b.split("\n"),s=(b.slice(0,f).match(/\n/g)||"").length+1;for(var z=f,B=-1;z>=0&&b.charAt(z)!=="\n";z--)B++;x={type:"Parse",message:"Syntax Error on line "+s,index:f,filename:a.filename,line:s,column:B,extract:[u[s-2],u[s-1],u[s]]}}this.imports.queue.length>0?o=function(){i(x,n)}:i(x,n)},parsers:{primary:function(){var a,b=[];while((a=t(this.mixin.definition)||t(this.rule)||t(this.ruleset)||t(this.mixin.call)||t(this.comment)||t(this.directive))||t(/^[\s\n]+/))a&&b.push(a);return b},comment:function(){var a;if(b.charAt(f)!=="/")return;if(b.charAt(f+1)==="/")return new e.Comment(t(/^\/\/.*/),!0);if(a=t(/^\/\*(?:[^*]|\*+[^\/*])*\*+\/\n?/))return new e.Comment(a)},entities:{quoted:function(){var a,c=f,d;b.charAt(c)==="~"&&(c++,d=!0);if(b.charAt(c)!=='"'&&b.charAt(c)!=="'")return;d&&t("~");if(a=t(/^"((?:[^"\\\r\n]|\\.)*)"|'((?:[^'\\\r\n]|\\.)*)'/))return new e.Quoted(a[0],a[1]||a[2],d)},keyword:function(){var a;if(a=t(/^[_A-Za-z-][_A-Za-z0-9-]*/))return e.colors.hasOwnProperty(a)?new e.Color(e.colors[a].slice(1)):new e.Keyword(a)},call:function(){var b,c,d=f;if(!(b=/^([\w-]+|%|progid:[\w\.]+)\(/.exec(k[g])))return;b=b[1].toLowerCase();if(b==="url")return null;f+=b.length;if(b==="alpha")return t(this.alpha);t("("),c=t(this.entities.arguments);if(!t(")"))return;if(b)return new e.Call(b,c,d,a.filename)},arguments:function(){var a=[],b;while(b=t(this.entities.assignment)||t(this.expression)){a.push(b);if(!t(","))break}return a},literal:function(){return t(this.entities.dimension)||t(this.entities.color)||t(this.entities.quoted)},assignment:function(){var a,b;if((a=t(/^\w+(?=\s?=)/i))&&t("=")&&(b=t(this.entity)))return new e.Assignment(a,b)},url:function(){var a;if(b.charAt(f)!=="u"||!t(/^url\(/))return;return a=t(this.entities.quoted)||t(this.entities.variable)||t(this.entities.dataURI)||t(/^[-\w%@$\/.&=:;#+?~]+/)||"",u(")"),new e.URL(a.value||a.data||a instanceof e.Variable?a:new e.Anonymous(a),p.paths)},dataURI:function(){var a;if(t(/^data:/)){a={},a.mime=t(/^[^\/]+\/[^,;)]+/)||"",a.charset=t(/^;\s*charset=[^,;)]+/)||"",a.base64=t(/^;\s*base64/)||"",a.data=t(/^,\s*[^)]+/);if(a.data)return a}},variable:function(){var c,d=f;if(b.charAt(f)==="@"&&(c=t(/^@@?[\w-]+/)))return new e.Variable(c,d,a.filename)},color:function(){var a;if(b.charAt(f)==="#"&&(a=t(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})/)))return new e.Color(a[1])},dimension:function(){var a,c=b.charCodeAt(f);if(c>57||c<45||c===47)return;if(a=t(/^(-?\d*\.?\d+)(px|%|em|rem|pc|ex|in|deg|s|ms|pt|cm|mm|rad|grad|turn)?/))return new e.Dimension(a[1],a[2])},javascript:function(){var a,c=f,d;b.charAt(c)==="~"&&(c++,d=!0);if(b.charAt(c)!=="`")return;d&&t("~");if(a=t(/^`([^`]*)`/))return new e.JavaScript(a[1],f,d)}},variable:function(){var a;if(b.charAt(f)==="@"&&(a=t(/^(@[\w-]+)\s*:/)))return a[1]},shorthand:function(){var a,b;if(!w(/^[@\w.%-]+\/[@\w.-]+/))return;if((a=t(this.entity))&&t("/")&&(b=t(this.entity)))return new e.Shorthand(a,b)},mixin:{call:function(){var c=[],d,g,h,i=f,j=b.charAt(f),k=!1;if(j!=="."&&j!=="#")return;while(d=t(/^[#.](?:[\w-]|\\(?:[a-fA-F0-9]{1,6} ?|[^a-fA-F0-9]))+/))c.push(new e.Element(g,d,f)),g=t(">");t("(")&&(h=t(this.entities.arguments))&&t(")"),t(this.important)&&(k=!0);if(c.length>0&&(t(";")||w("}")))return new e.mixin.Call(c,h||[],i,a.filename,k)},definition:function(){var a,c=[],d,g,h,i,j,k=!1;if(b.charAt(f)!=="."&&b.charAt(f)!=="#"||w(/^[^{]*(;|})/))return;q();if(d=t(/^([#.](?:[\w-]|\\(?:[a-fA-F0-9]{1,6} ?|[^a-fA-F0-9]))+)\s*\(/)){a=d[1];do{if(b.charAt(f)==="."&&t(/^\.{3}/)){k=!0;break}if(!(h=t(this.entities.variable)||t(this.entities.literal)||t(this.entities.keyword)))break;if(h instanceof e.Variable)if(t(":"))i=u(this.expression,"expected expression"),c.push({name:h.name,value:i});else{if(t(/^\.{3}/)){c.push({name:h.name,variadic:!0}),k=!0;break}c.push({name:h.name})}else c.push({value:h})}while(t(","));u(")"),t(/^when/)&&(j=u(this.conditions,"expected condition")),g=t(this.block);if(g)return new e.mixin.Definition(a,c,g,j,k);r()}}},entity:function(){return t(this.entities.literal)||t(this.entities.variable)||t(this.entities.url)||t(this.entities.call)||t(this.entities.keyword)||t(this.entities.javascript)||t(this.comment)},end:function(){return t(";")||w("}")},alpha:function(){var a;if(!t(/^\(opacity=/i))return;if(a=t(/^\d+/)||t(this.entities.variable))return u(")"),new e.Alpha(a)},element:function(){var a,b,c,d;c=t(this.combinator),a=t(/^(?:\d+\.\d+|\d+)%/)||t(/^(?:[.#]?|:*)(?:[\w-]|\\(?:[a-fA-F0-9]{1,6} ?|[^a-fA-F0-9]))+/)||t("*")||t(this.attribute)||t(/^\([^)@]+\)/),a||t("(")&&(d=t(this.entities.variable))&&t(")")&&(a=new e.Paren(d));if(a)return new e.Element(c,a,f);if(c.value&&c.value.charAt(0)==="&")return new e.Element(c,null,f)},combinator:function(){var a,c=b.charAt(f);if(c===">"||c==="+"||c==="~"){f++;while(b.charAt(f)===" ")f++;return new e.Combinator(c)}if(c==="&"){a="&",f++,b.charAt(f)===" "&&(a="& ");while(b.charAt(f)===" ")f++;return new e.Combinator(a)}return b.charAt(f-1)===" "?new e.Combinator(" "):new e.Combinator(null)},selector:function(){var a,c,d=[],g,h;if(t("("))return a=t(this.entity),u(")"),new e.Selector([new e.Element("",a,f)]);while(c=t(this.element)){g=b.charAt(f),d.push(c);if(g==="{"||g==="}"||g===";"||g===",")break}if(d.length>0)return new e.Selector(d)},tag:function(){return t(/^[a-zA-Z][a-zA-Z-]*[0-9]?/)||t("*")},attribute:function(){var a="",b,c,d;if(!t("["))return;if(b=t(/^[a-zA-Z-]+/)||t(this.entities.quoted))(d=t(/^[|~*$^]?=/))&&(c=t(this.entities.quoted)||t(/^[\w-]+/))?a=[b,d,c.toCSS?c.toCSS():c].join(""):a=b;if(!t("]"))return;if(a)return"["+a+"]"},block:function(){var a;if(t("{")&&(a=t(this.primary))&&t("}"))return a},ruleset:function(){var b=[],c,d,g;q();while(c=t(this.selector)){b.push(c),t(this.comment);if(!t(","))break;t(this.comment)}if(b.length>0&&(d=t(this.block)))return new e.Ruleset(b,d,a.strictImports);j=f,r()},rule:function(){var a,c,d=b.charAt(f),h,l;q();if(d==="."||d==="#"||d==="&")return;if(a=t(this.variable)||t(this.property)){a.charAt(0)!="@"&&(l=/^([^@+\/'"*`(;{}-]*);/.exec(k[g]))?(f+=l[0].length-1,c=new e.Anonymous(l[1])):a==="font"?c=t(this.font):c=t(this.value),h=t(this.important);if(c&&t(this.end))return new e.Rule(a,c,h,i);j=f,r()}},"import":function(){var a,b,c=f;if(t(/^@import\s+/)&&(a=t(this.entities.quoted)||t(this.entities.url))){b=t(this.mediaFeatures);if(t(";"))return new e.Import(a,p,b,c)}},mediaFeature:function(){var a,b,c=[];do if(a=t(this.entities.keyword))c.push(a);else if(t("(")){b=t(this.property),a=t(this.entity);if(!t(")"))return null;if(b&&a)c.push(new e.Paren(new e.Rule(b,a,null,f,!0)));else if(a)c.push(new e.Paren(a));else return null}while(a);if(c.length>0)return new e.Expression(c)},mediaFeatures:function(){var a,b=[];do if(a=t(this.mediaFeature)){b.push(a);if(!t(","))break}else if(a=t(this.entities.variable)){b.push(a);if(!t(","))break}while(a);return b.length>0?b:null},media:function(){var a,b;if(t(/^@media/)){a=t(this.mediaFeatures);if(b=t(this.block))return new e.Media(b,a)}},directive:function(){var a,c,d,g,h,i;if(b.charAt(f)!=="@")return;if(c=t(this["import"])||t(this.media))return c;if(a=t(/^@page|@keyframes/)||t(/^@(?:-webkit-|-moz-|-o-|-ms-)[a-z0-9-]+/)){g=(t(/^[^{]+/)||"").trim();if(d=t(this.block))return new e.Directive(a+" "+g,d)}else if(a=t(/^@[-a-z]+/))if(a==="@font-face"){if(d=t(this.block))return new e.Directive(a,d)}else if((c=t(this.entity))&&t(";"))return new e.Directive(a,c)},font:function(){var a=[],b=[],c,d,f,g;while(g=t(this.shorthand)||t(this.entity))b.push(g);a.push(new e.Expression(b));if(t(","))while(g=t(this.expression)){a.push(g);if(!t(","))break}return new e.Value(a)},value:function(){var a,b=[],c;while(a=t(this.expression)){b.push(a);if(!t(","))break}if(b.length>0)return new e.Value(b)},important:function(){if(b.charAt(f)==="!")return t(/^! *important/)},sub:function(){var a;if(t("(")&&(a=t(this.expression))&&t(")"))return a},multiplication:function(){var a,b,c,d;if(a=t(this.operand)){while(!w(/^\/\*/)&&(c=t("/")||t("*"))&&(b=t(this.operand)))d=new e.Operation(c,[d||a,b]);return d||a}},addition:function(){var a,c,d,g;if(a=t(this.multiplication)){while((d=t(/^[-+]\s+/)||b.charAt(f-1)!=" "&&(t("+")||t("-")))&&(c=t(this.multiplication)))g=new e.Operation(d,[g||a,c]);return g||a}},conditions:function(){var a,b,c=f,d;if(a=t(this.condition)){while(t(",")&&(b=t(this.condition)))d=new e.Condition("or",d||a,b,c);return d||a}},condition:function(){var a,b,c,d,g=f,h=!1;t(/^not/)&&(h=!0),u("(");if(a=t(this.addition)||t(this.entities.keyword)||t(this.entities.quoted))return(d=t(/^(?:>=|=<|[<=>])/))?(b=t(this.addition)||t(this.entities.keyword)||t(this.entities.quoted))?c=new e.Condition(d,a,b,g,h):v("expected expression"):c=new e.Condition("=",a,new e.Keyword("true"),g,h),u(")"),t(/^and/)?new e.Condition("and",c,t(this.condition)):c},operand:function(){var a,c=b.charAt(f+1);b.charAt(f)==="-"&&(c==="@"||c==="(")&&(a=t("-"));var d=t(this.sub)||t(this.entities.dimension)||t(this.entities.color)||t(this.entities.variable)||t(this.entities.call);return a?new e.Operation("*",[new e.Dimension(-1),d]):d},expression:function(){var a,b,c=[],d;while(a=t(this.addition)||t(this.entity))c.push(a);if(c.length>0)return new e.Expression(c)},property:function(){var a;if(a=t(/^(\*?-?[-a-z_0-9]+)\s*:/))return a[1]}}}};if(d.mode==="browser"||d.mode==="rhino")d.Parser.importer=function(a,b,c,d){!/^([a-z]+:)?\//.test(a)&&b.length>0&&(a=b[0]+a),n({href:a,title:a,type:d.mime},function(e){e&&typeof d.errback=="function"?d.errback.call(null,a,b,c,d):c.apply(null,arguments)},!0)};(function(a){function b(b){return a.functions.hsla(b.h,b.s,b.l,b.a)}function c(b){if(b instanceof a.Dimension)return parseFloat(b.unit=="%"?b.value/100:b.value);if(typeof b=="number")return b;throw{error:"RuntimeError",message:"color functions take numbers as parameters"}}function d(a){return Math.min(1,Math.max(0,a))}a.functions={rgb:function(a,b,c){return this.rgba(a,b,c,1)},rgba:function(b,d,e,f){var g=[b,d,e].map(function(a){return c(a)}),f=c(f);return new a.Color(g,f)},hsl:function(a,b,c){return this.hsla(a,b,c,1)},hsla:function(a,b,d,e){function h(a){return a=a<0?a+1:a>1?a-1:a,a*6<1?g+(f-g)*a*6:a*2<1?f:a*3<2?g+(f-g)*(2/3-a)*6:g}a=c(a)%360/360,b=c(b),d=c(d),e=c(e);var f=d<=.5?d*(b+1):d+b-d*b,g=d*2-f;return this.rgba(h(a+1/3)*255,h(a)*255,h(a-1/3)*255,e)},hue:function(b){return new a.Dimension(Math.round(b.toHSL().h))},saturation:function(b){return new a.Dimension(Math.round(b.toHSL().s*100),"%")},lightness:function(b){return new a.Dimension(Math.round(b.toHSL().l*100),"%")},alpha:function(b){return new a.Dimension(b.toHSL().a)},saturate:function(a,c){var e=a.toHSL();return e.s+=c.value/100,e.s=d(e.s),b(e)},desaturate:function(a,c){var e=a.toHSL();return e.s-=c.value/100,e.s=d(e.s),b(e)},lighten:function(a,c){var e=a.toHSL();return e.l+=c.value/100,e.l=d(e.l),b(e)},darken:function(a,c){var e=a.toHSL();return e.l-=c.value/100,e.l=d(e.l),b(e)},fadein:function(a,c){var e=a.toHSL();return e.a+=c.value/100,e.a=d(e.a),b(e)},fadeout:function(a,c){var e=a.toHSL();return e.a-=c.value/100,e.a=d(e.a),b(e)},fade:function(a,c){var e=a.toHSL();return e.a=c.value/100,e.a=d(e.a),b(e)},spin:function(a,c){var d=a.toHSL(),e=(d.h+c.value)%360;return d.h=e<0?360+e:e,b(d)},mix:function(b,c,d){var e=d.value/100,f=e*2-1,g=b.toHSL().a-c.toHSL().a,h=((f*g==-1?f:(f+g)/(1+f*g))+1)/2,i=1-h,j=[b.rgb[0]*h+c.rgb[0]*i,b.rgb[1]*h+c.rgb[1]*i,b.rgb[2]*h+c.rgb[2]*i],k=b.alpha*e+c.alpha*(1-e);return new a.Color(j,k)},greyscale:function(b){return this.desaturate(b,new a.Dimension(100))},e:function(b){return new a.Anonymous(b instanceof a.JavaScript?b.evaluated:b)},escape:function(b){return new a.Anonymous(encodeURI(b.value).replace(/=/g,"%3D").replace(/:/g,"%3A").replace(/#/g,"%23").replace(/;/g,"%3B").replace(/\(/g,"%28").replace(/\)/g,"%29"))},"%":function(b){var c=Array.prototype.slice.call(arguments,1),d=b.value;for(var e=0;e<c.length;e++)d=d.replace(/%[sda]/i,function(a){var b=a.match(/s/i)?c[e].value:c[e].toCSS();return a.match(/[A-Z]$/)?encodeURIComponent(b):b});return d=d.replace(/%%/g,"%"),new a.Quoted('"'+d+'"',d)},round:function(a){return this._math("round",a)},ceil:function(a){return this._math("ceil",a)},floor:function(a){return this._math("floor",a)},_math:function(b,d){if(d instanceof a.Dimension)return new a.Dimension(Math[b](c(d)),d.unit);if(typeof d=="number")return Math[b](d);throw{type:"Argument",message:"argument must be a number"}},argb:function(b){return new a.Anonymous(b.toARGB())},percentage:function(b){return new a.Dimension(b.value*100,"%")},color:function(b){if(b instanceof a.Quoted)return new a.Color(b.value.slice(1));throw{type:"Argument",message:"argument must be a string"}},iscolor:function(b){return this._isa(b,a.Color)},isnumber:function(b){return this._isa(b,a.Dimension)},isstring:function(b){return this._isa(b,a.Quoted)},iskeyword:function(b){return this._isa(b,a.Keyword)},isurl:function(b){return this._isa(b,a.URL)},ispixel:function(b){return b instanceof a.Dimension&&b.unit==="px"?a.True:a.False},ispercentage:function(b){return b instanceof a.Dimension&&b.unit==="%"?a.True:a.False},isem:function(b){return b instanceof a.Dimension&&b.unit==="em"?a.True:a.False},_isa:function(b,c){return b instanceof c?a.True:a.False}}})(c("./tree")),function(a){a.colors={aliceblue:"#f0f8ff",antiquewhite:"#faebd7",aqua:"#00ffff",aquamarine:"#7fffd4",azure:"#f0ffff",beige:"#f5f5dc",bisque:"#ffe4c4",black:"#000000",blanchedalmond:"#ffebcd",blue:"#0000ff",blueviolet:"#8a2be2",brown:"#a52a2a",burlywood:"#deb887",cadetblue:"#5f9ea0",chartreuse:"#7fff00",chocolate:"#d2691e",coral:"#ff7f50",cornflowerblue:"#6495ed",cornsilk:"#fff8dc",crimson:"#dc143c",cyan:"#00ffff",darkblue:"#00008b",darkcyan:"#008b8b",darkgoldenrod:"#b8860b",darkgray:"#a9a9a9",darkgrey:"#a9a9a9",darkgreen:"#006400",darkkhaki:"#bdb76b",darkmagenta:"#8b008b",darkolivegreen:"#556b2f",darkorange:"#ff8c00",darkorchid:"#9932cc",darkred:"#8b0000",darksalmon:"#e9967a",darkseagreen:"#8fbc8f",darkslateblue:"#483d8b",darkslategray:"#2f4f4f",darkslategrey:"#2f4f4f",darkturquoise:"#00ced1",darkviolet:"#9400d3",deeppink:"#ff1493",deepskyblue:"#00bfff",dimgray:"#696969",dimgrey:"#696969",dodgerblue:"#1e90ff",firebrick:"#b22222",floralwhite:"#fffaf0",forestgreen:"#228b22",fuchsia:"#ff00ff",gainsboro:"#dcdcdc",ghostwhite:"#f8f8ff",gold:"#ffd700",goldenrod:"#daa520",gray:"#808080",grey:"#808080",green:"#008000",greenyellow:"#adff2f",honeydew:"#f0fff0",hotpink:"#ff69b4",indianred:"#cd5c5c",indigo:"#4b0082",ivory:"#fffff0",khaki:"#f0e68c",lavender:"#e6e6fa",lavenderblush:"#fff0f5",lawngreen:"#7cfc00",lemonchiffon:"#fffacd",lightblue:"#add8e6",lightcoral:"#f08080",lightcyan:"#e0ffff",lightgoldenrodyellow:"#fafad2",lightgray:"#d3d3d3",lightgrey:"#d3d3d3",lightgreen:"#90ee90",lightpink:"#ffb6c1",lightsalmon:"#ffa07a",lightseagreen:"#20b2aa",lightskyblue:"#87cefa",lightslategray:"#778899",lightslategrey:"#778899",lightsteelblue:"#b0c4de",lightyellow:"#ffffe0",lime:"#00ff00",limegreen:"#32cd32",linen:"#faf0e6",magenta:"#ff00ff",maroon:"#800000",mediumaquamarine:"#66cdaa",mediumblue:"#0000cd",mediumorchid:"#ba55d3",mediumpurple:"#9370d8",mediumseagreen:"#3cb371",mediumslateblue:"#7b68ee",mediumspringgreen:"#00fa9a",mediumturquoise:"#48d1cc",mediumvioletred:"#c71585",midnightblue:"#191970",mintcream:"#f5fffa",mistyrose:"#ffe4e1",moccasin:"#ffe4b5",navajowhite:"#ffdead",navy:"#000080",oldlace:"#fdf5e6",olive:"#808000",olivedrab:"#6b8e23",orange:"#ffa500",orangered:"#ff4500",orchid:"#da70d6",palegoldenrod:"#eee8aa",palegreen:"#98fb98",paleturquoise:"#afeeee",palevioletred:"#d87093",papayawhip:"#ffefd5",peachpuff:"#ffdab9",peru:"#cd853f",pink:"#ffc0cb",plum:"#dda0dd",powderblue:"#b0e0e6",purple:"#800080",red:"#ff0000",rosybrown:"#bc8f8f",royalblue:"#4169e1",saddlebrown:"#8b4513",salmon:"#fa8072",sandybrown:"#f4a460",seagreen:"#2e8b57",seashell:"#fff5ee",sienna:"#a0522d",silver:"#c0c0c0",skyblue:"#87ceeb",slateblue:"#6a5acd",slategray:"#708090",slategrey:"#708090",snow:"#fffafa",springgreen:"#00ff7f",steelblue:"#4682b4",tan:"#d2b48c",teal:"#008080",thistle:"#d8bfd8",tomato:"#ff6347",turquoise:"#40e0d0",violet:"#ee82ee",wheat:"#f5deb3",white:"#ffffff",whitesmoke:"#f5f5f5",yellow:"#ffff00",yellowgreen:"#9acd32"}}(c("./tree")),function(a){a.Alpha=function(a){this.value=a},a.Alpha.prototype={toCSS:function(){return"alpha(opacity="+(this.value.toCSS?this.value.toCSS():this.value)+")"},eval:function(a){return this.value.eval&&(this.value=this.value.eval(a)),this}}}(c("../tree")),function(a){a.Anonymous=function(a){this.value=a.value||a},a.Anonymous.prototype={toCSS:function(){return this.value},eval:function(){return this}}}(c("../tree")),function(a){a.Assignment=function(a,b){this.key=a,this.value=b},a.Assignment.prototype={toCSS:function(){return this.key+"="+(this.value.toCSS?this.value.toCSS():this.value)},eval:function(a){return this.value.eval&&(this.value=this.value.eval(a)),this}}}(c("../tree")),function(a){a.Call=function(a,b,c,d){this.name=a,this.args=b,this.index=c,this.filename=d},a.Call.prototype={eval:function(b){var c=this.args.map(function(a){return a.eval(b)});if(!(this.name in a.functions))return new a.Anonymous(this.name+"("+c.map(function(a){return a.toCSS()}).join(", ")+")");try{return a.functions[this.name].apply(a.functions,c)}catch(d){throw{type:d.type||"Runtime",message:"error evaluating function `"+this.name+"`"+(d.message?": "+d.message:""),index:this.index,filename:this.filename}}},toCSS:function(a){return this.eval(a).toCSS()}}}(c("../tree")),function(a){a.Color=function(a,b){Array.isArray(a)?this.rgb=a:a.length==6?this.rgb=a.match(/.{2}/g).map(function(a){return parseInt(a,16)}):this.rgb=a.split("").map(function(a){return parseInt(a+a,16)}),this.alpha=typeof b=="number"?b:1},a.Color.prototype={eval:function(){return this},toCSS:function(){return this.alpha<1?"rgba("+this.rgb.map(function(a){return Math.round(a)}).concat(this.alpha).join(", ")+")":"#"+this.rgb.map(function(a){return a=Math.round(a),a=(a>255?255:a<0?0:a).toString(16),a.length===1?"0"+a:a}).join("")},operate:function(b,c){var d=[];c instanceof a.Color||(c=c.toColor());for(var e=0;e<3;e++)d[e]=a.operate(b,this.rgb[e],c.rgb[e]);return new a.Color(d,this.alpha+c.alpha)},toHSL:function(){var a=this.rgb[0]/255,b=this.rgb[1]/255,c=this.rgb[2]/255,d=this.alpha,e=Math.max(a,b,c),f=Math.min(a,b,c),g,h,i=(e+f)/2,j=e-f;if(e===f)g=h=0;else{h=i>.5?j/(2-e-f):j/(e+f);switch(e){case a:g=(b-c)/j+(b<c?6:0);break;case b:g=(c-a)/j+2;break;case c:g=(a-b)/j+4}g/=6}return{h:g*360,s:h,l:i,a:d}},toARGB:function(){var a=[Math.round(this.alpha*255)].concat(this.rgb);return"#"+a.map(function(a){return a=Math.round(a),a=(a>255?255:a<0?0:a).toString(16),a.length===1?"0"+a:a}).join("")}}}(c("../tree")),function(a){a.Comment=function(a,b){this.value=a,this.silent=!!b},a.Comment.prototype={toCSS:function(a){return a.compress?"":this.value},eval:function(){return this}}}(c("../tree")),function(a){a.Condition=function(a,b,c,d,e){this.op=a.trim(),this.lvalue=b,this.rvalue=c,this.index=d,this.negate=e},a.Condition.prototype.eval=function(a){var b=this.lvalue.eval(a),c=this.rvalue.eval(a),d=this.index,e,e=function(a){switch(a){case"and":return b&&c;case"or":return b||c;default:if(b.compare)e=b.compare(c);else if(c.compare)e=c.compare(b);else throw{type:"Type",message:"Unable to perform comparison",index:d};switch(e){case-1:return a==="<"||a==="=<";case 0:return a==="="||a===">="||a==="=<";case 1:return a===">"||a===">="}}}(this.op);return this.negate?!e:e}}(c("../tree")),function(a){a.Dimension=function(a,b){this.value=parseFloat(a),this.unit=b||null},a.Dimension.prototype={eval:function(){return this},toColor:function(){return new a.Color([this.value,this.value,this.value])},toCSS:function(){var a=this.value+this.unit;return a},operate:function(b,c){return new a.Dimension(a.operate(b,this.value,c.value),this.unit||c.unit)},compare:function(b){return b instanceof a.Dimension?b.value>this.value?-1:b.value<this.value?1:0:-1}}}(c("../tree")),function(a){a.Directive=function(b,c,d){this.name=b,Array.isArray(c)?(this.ruleset=new a.Ruleset([],c),this.ruleset.allowImports=!0):this.value=c},a.Directive.prototype={toCSS:function(a,b){return this.ruleset?(this.ruleset.root=!0,this.name+(b.compress?"{":" {\n  ")+this.ruleset.toCSS(a,b).trim().replace(/\n/g,"\n  ")+(b.compress?"}":"\n}\n")):this.name+" "+this.value.toCSS()+";\n"},eval:function(a){return a.frames.unshift(this),this.ruleset=this.ruleset&&this.ruleset.eval(a),a.frames.shift(),this},variable:function(b){return a.Ruleset.prototype.variable.call(this.ruleset,b)},find:function(){return a.Ruleset.prototype.find.apply(this.ruleset,arguments)},rulesets:function(){return a.Ruleset.prototype.rulesets.apply(this.ruleset)}}}(c("../tree")),function(a){a.Element=function(b,c,d){this.combinator=b instanceof a.Combinator?b:new a.Combinator(b),typeof c=="string"?this.value=c.trim():c?this.value=c:this.value="",this.index=d},a.Element.prototype.eval=function(b){return new a.Element(this.combinator,this.value.eval?this.value.eval(b):this.value,this.index)},a.Element.prototype.toCSS=function(a){return this.combinator.toCSS(a||{})+(this.value.toCSS?this.value.toCSS(a):this.value)},a.Combinator=function(a){a===" "?this.value=" ":a==="& "?this.value="& ":this.value=a?a.trim():""},a.Combinator.prototype.toCSS=function(a){return{"":""," ":" ","&":"","& ":" ",":":" :","+":a.compress?"+":" + ","~":a.compress?"~":" ~ ",">":a.compress?">":" > "}[this.value]}}(c("../tree")),function(a){a.Expression=function(a){this.value=a},a.Expression.prototype={eval:function(b){return this.value.length>1?new a.Expression(this.value.map(function(a){return a.eval(b)})):this.value.length===1?this.value[0].eval(b):this},toCSS:function(a){return this.value.map(function(b){return b.toCSS?b.toCSS(a):""}).join(" ")}}}(c("../tree")),function(a){a.Import=function(b,c,d,e){var f=this;this.index=e,this._path=b,this.features=d&&new a.Value(d),b instanceof a.Quoted?this.path=/\.(le?|c)ss(\?.*)?$/.test(b.value)?b.value:b.value+".less":this.path=b.value.value||b.value,this.css=/css(\?.*)?$/.test(this.path),this.css||c.push(this.path,function(b,c){b&&(b.index=e),f.root=c||new a.Ruleset([],[])})},a.Import.prototype={toCSS:function(a){var b=this.features?" "+this.features.toCSS(a):"";return this.css?"@import "+this._path.toCSS()+b+";\n":""},eval:function(b){var c,d=this.features&&this.features.eval(b);if(this.css)return this;c=new a.Ruleset([],this.root.rules.slice(0));for(var e=0;e<c.rules.length;e++)c.rules[e]instanceof a.Import&&Array.prototype
+.splice.apply(c.rules,[e,1].concat(c.rules[e].eval(b)));return this.features?new a.Media(c.rules,this.features.value):c.rules}}}(c("../tree")),function(a){a.JavaScript=function(a,b,c){this.escaped=c,this.expression=a,this.index=b},a.JavaScript.prototype={eval:function(b){var c,d=this,e={},f=this.expression.replace(/@\{([\w-]+)\}/g,function(c,e){return a.jsify((new a.Variable("@"+e,d.index)).eval(b))});try{f=new Function("return ("+f+")")}catch(g){throw{message:"JavaScript evaluation error: `"+f+"`",index:this.index}}for(var h in b.frames[0].variables())e[h.slice(1)]={value:b.frames[0].variables()[h].value,toJS:function(){return this.value.eval(b).toCSS()}};try{c=f.call(e)}catch(g){throw{message:"JavaScript evaluation error: '"+g.name+": "+g.message+"'",index:this.index}}return typeof c=="string"?new a.Quoted('"'+c+'"',c,this.escaped,this.index):Array.isArray(c)?new a.Anonymous(c.join(", ")):new a.Anonymous(c)}}}(c("../tree")),function(a){a.Keyword=function(a){this.value=a},a.Keyword.prototype={eval:function(){return this},toCSS:function(){return this.value},compare:function(b){return b instanceof a.Keyword?b.value===this.value?0:1:-1}},a.True=new a.Keyword("true"),a.False=new a.Keyword("false")}(c("../tree")),function(a){a.Media=function(b,c){var d=new a.Element("&",null,0),e=[new a.Selector([d])];this.features=new a.Value(c),this.ruleset=new a.Ruleset(e,b),this.ruleset.allowImports=!0},a.Media.prototype={toCSS:function(a,b){var c=this.features.toCSS(b);return this.ruleset.root=a.length===0||a[0].multiMedia,"@media "+c+(b.compress?"{":" {\n  ")+this.ruleset.toCSS(a,b).trim().replace(/\n/g,"\n  ")+(b.compress?"}":"\n}\n")},eval:function(b){b.mediaBlocks||(b.mediaBlocks=[],b.mediaPath=[]);var c=b.mediaBlocks.length;b.mediaPath.push(this),b.mediaBlocks.push(this);var d=new a.Media([],[]);return d.features=this.features.eval(b),b.frames.unshift(this.ruleset),d.ruleset=this.ruleset.eval(b),b.frames.shift(),b.mediaBlocks[c]=d,b.mediaPath.pop(),b.mediaPath.length===0?d.evalTop(b):d.evalNested(b)},variable:function(b){return a.Ruleset.prototype.variable.call(this.ruleset,b)},find:function(){return a.Ruleset.prototype.find.apply(this.ruleset,arguments)},rulesets:function(){return a.Ruleset.prototype.rulesets.apply(this.ruleset)},evalTop:function(b){var c=this;if(b.mediaBlocks.length>1){var d=new a.Element("&",null,0),e=[new a.Selector([d])];c=new a.Ruleset(e,b.mediaBlocks),c.multiMedia=!0}return delete b.mediaBlocks,delete b.mediaPath,c},evalNested:function(b){var c,d,e=b.mediaPath.concat([this]);for(c=0;c<e.length;c++)d=e[c].features instanceof a.Value?e[c].features.value:e[c].features,e[c]=Array.isArray(d)?d:[d];return this.features=new a.Value(this.permute(e).map(function(b){b=b.map(function(b){return b.toCSS?b:new a.Anonymous(b)});for(c=b.length-1;c>0;c--)b.splice(c,0,new a.Anonymous("and"));return new a.Expression(b)})),new a.Ruleset([],[])},permute:function(a){if(a.length===0)return[];if(a.length===1)return a[0];var b=[],c=this.permute(a.slice(1));for(var d=0;d<c.length;d++)for(var e=0;e<a[0].length;e++)b.push([a[0][e]].concat(c[d]));return b}}}(c("../tree")),function(a){a.mixin={},a.mixin.Call=function(b,c,d,e,f){this.selector=new a.Selector(b),this.arguments=c,this.index=d,this.filename=e,this.important=f},a.mixin.Call.prototype={eval:function(a){var b,c,d=[],e=!1;for(var f=0;f<a.frames.length;f++)if((b=a.frames[f].find(this.selector)).length>0){c=this.arguments&&this.arguments.map(function(b){return b.eval(a)});for(var g=0;g<b.length;g++)if(b[g].match(c,a))try{Array.prototype.push.apply(d,b[g].eval(a,this.arguments,this.important).rules),e=!0}catch(h){throw{message:h.message,index:this.index,filename:this.filename,stack:h.stack}}if(e)return d;throw{type:"Runtime",message:"No matching definition was found for `"+this.selector.toCSS().trim()+"("+this.arguments.map(function(a){return a.toCSS()}).join(", ")+")`",index:this.index,filename:this.filename}}throw{type:"Name",message:this.selector.toCSS().trim()+" is undefined",index:this.index,filename:this.filename}}},a.mixin.Definition=function(b,c,d,e,f){this.name=b,this.selectors=[new a.Selector([new a.Element(null,b)])],this.params=c,this.condition=e,this.variadic=f,this.arity=c.length,this.rules=d,this._lookups={},this.required=c.reduce(function(a,b){return!b.name||b.name&&!b.value?a+1:a},0),this.parent=a.Ruleset.prototype,this.frames=[]},a.mixin.Definition.prototype={toCSS:function(){return""},variable:function(a){return this.parent.variable.call(this,a)},variables:function(){return this.parent.variables.call(this)},find:function(){return this.parent.find.apply(this,arguments)},rulesets:function(){return this.parent.rulesets.apply(this)},evalParams:function(b,c){var d=new a.Ruleset(null,[]),e;for(var f=0,g,h;f<this.params.length;f++)if(h=this.params[f].name)if(this.params[f].variadic&&c){e=[];for(var i=f;i<c.length;i++)e.push(c[i].eval(b));d.rules.unshift(new a.Rule(h,(new a.Expression(e)).eval(b)))}else if(g=c&&c[f]||this.params[f].value)d.rules.unshift(new a.Rule(h,g.eval(b)));else throw{type:"Runtime",message:"wrong number of arguments for "+this.name+" ("+c.length+" for "+this.arity+")"};return d},eval:function(b,c,d){var e=this.evalParams(b,c),f,g=[],h,i;for(var j=0;j<Math.max(this.params.length,c&&c.length);j++)g.push(c[j]||this.params[j].value);return e.rules.unshift(new a.Rule("@arguments",(new a.Expression(g)).eval(b))),h=d?this.rules.map(function(b){return new a.Rule(b.name,b.value,"!important",b.index)}):this.rules.slice(0),(new a.Ruleset(null,h)).eval({frames:[this,e].concat(this.frames,b.frames)})},match:function(a,b){var c=a&&a.length||0,d,e;if(!this.variadic){if(c<this.required)return!1;if(c>this.params.length)return!1;if(this.required>0&&c>this.params.length)return!1}if(this.condition&&!this.condition.eval({frames:[this.evalParams(b,a)].concat(b.frames)}))return!1;d=Math.min(c,this.arity);for(var f=0;f<d;f++)if(!this.params[f].name&&a[f].eval(b).toCSS()!=this.params[f].value.eval(b).toCSS())return!1;return!0}}}(c("../tree")),function(a){a.Operation=function(a,b){this.op=a.trim(),this.operands=b},a.Operation.prototype.eval=function(b){var c=this.operands[0].eval(b),d=this.operands[1].eval(b),e;if(c instanceof a.Dimension&&d instanceof a.Color)if(this.op==="*"||this.op==="+")e=d,d=c,c=e;else throw{name:"OperationError",message:"Can't substract or divide a color from a number"};return c.operate(this.op,d)},a.operate=function(a,b,c){switch(a){case"+":return b+c;case"-":return b-c;case"*":return b*c;case"/":return b/c}}}(c("../tree")),function(a){a.Paren=function(a){this.value=a},a.Paren.prototype={toCSS:function(a){return"("+this.value.toCSS(a)+")"},eval:function(b){return new a.Paren(this.value.eval(b))}}}(c("../tree")),function(a){a.Quoted=function(a,b,c,d){this.escaped=c,this.value=b||"",this.quote=a.charAt(0),this.index=d},a.Quoted.prototype={toCSS:function(){return this.escaped?this.value:this.quote+this.value+this.quote},eval:function(b){var c=this,d=this.value.replace(/`([^`]+)`/g,function(d,e){return(new a.JavaScript(e,c.index,!0)).eval(b).value}).replace(/@\{([\w-]+)\}/g,function(d,e){var f=(new a.Variable("@"+e,c.index)).eval(b);return"value"in f?f.value:f.toCSS()});return new a.Quoted(this.quote+d+this.quote,d,this.escaped,this.index)}}}(c("../tree")),function(a){a.Rule=function(b,c,d,e,f){this.name=b,this.value=c instanceof a.Value?c:new a.Value([c]),this.important=d?" "+d.trim():"",this.index=e,this.inline=f||!1,b.charAt(0)==="@"?this.variable=!0:this.variable=!1},a.Rule.prototype.toCSS=function(a){return this.variable?"":this.name+(a.compress?":":": ")+this.value.toCSS(a)+this.important+(this.inline?"":";")},a.Rule.prototype.eval=function(b){return new a.Rule(this.name,this.value.eval(b),this.important,this.index,this.inline)},a.Shorthand=function(a,b){this.a=a,this.b=b},a.Shorthand.prototype={toCSS:function(a){return this.a.toCSS(a)+"/"+this.b.toCSS(a)},eval:function(){return this}}}(c("../tree")),function(a){a.Ruleset=function(a,b,c){this.selectors=a,this.rules=b,this._lookups={},this.strictImports=c},a.Ruleset.prototype={eval:function(b){var c=this.selectors&&this.selectors.map(function(a){return a.eval(b)}),d=new a.Ruleset(c,this.rules.slice(0),this.strictImports);d.root=this.root,d.allowImports=this.allowImports,b.frames.unshift(d);if(d.root||d.allowImports||!d.strictImports)for(var e=0;e<d.rules.length;e++)d.rules[e]instanceof a.Import&&Array.prototype.splice.apply(d.rules,[e,1].concat(d.rules[e].eval(b)));for(var e=0;e<d.rules.length;e++)d.rules[e]instanceof a.mixin.Definition&&(d.rules[e].frames=b.frames.slice(0));for(var e=0;e<d.rules.length;e++)d.rules[e]instanceof a.mixin.Call&&Array.prototype.splice.apply(d.rules,[e,1].concat(d.rules[e].eval(b)));for(var e=0,f;e<d.rules.length;e++)f=d.rules[e],f instanceof a.mixin.Definition||(d.rules[e]=f.eval?f.eval(b):f);return b.frames.shift(),d},match:function(a){return!a||a.length===0},variables:function(){return this._variables?this._variables:this._variables=this.rules.reduce(function(b,c){return c instanceof a.Rule&&c.variable===!0&&(b[c.name]=c),b},{})},variable:function(a){return this.variables()[a]},rulesets:function(){return this._rulesets?this._rulesets:this._rulesets=this.rules.filter(function(b){return b instanceof a.Ruleset||b instanceof a.mixin.Definition})},find:function(b,c){c=c||this;var d=[],e,f,g=b.toCSS();return g in this._lookups?this._lookups[g]:(this.rulesets().forEach(function(e){if(e!==c)for(var g=0;g<e.selectors.length;g++)if(f=b.match(e.selectors[g])){b.elements.length>e.selectors[g].elements.length?Array.prototype.push.apply(d,e.find(new a.Selector(b.elements.slice(1)),c)):d.push(e);break}}),this._lookups[g]=d)},toCSS:function(b,c){var d=[],e=[],f=[],g=[],h,i;this.root||(b.length===0?g=this.selectors.map(function(a){return[a]}):this.joinSelectors(g,b,this.selectors));for(var j=0;j<this.rules.length;j++)i=this.rules[j],i.rules||i instanceof a.Directive||i instanceof a.Media?f.push(i.toCSS(g,c)):i instanceof a.Comment?i.silent||(this.root?f.push(i.toCSS(c)):e.push(i.toCSS(c))):i.toCSS&&!i.variable?e.push(i.toCSS(c)):i.value&&!i.variable&&e.push(i.value.toString());return f=f.join(""),this.root?d.push(e.join(c.compress?"":"\n")):e.length>0&&(h=g.map(function(a){return a.map(function(a){return a.toCSS(c)}).join("").trim()}).join(c.compress?",":",\n"),d.push(h,(c.compress?"{":" {\n  ")+e.join(c.compress?"":"\n  ")+(c.compress?"}":"\n}\n"))),d.push(f),d.join("")+(c.compress?"\n":"")},joinSelectors:function(a,b,c){for(var d=0;d<c.length;d++)this.joinSelector(a,b,c[d])},joinSelector:function(b,c,d){var e=[],f=[],g=[],h=[],i=!1,j;for(var k=0;k<d.elements.length;k++)j=d.elements[k],j.combinator.value.charAt(0)==="&"&&(i=!0),i?h.push(j):g.push(j);i||(h=g,g=[]),g.length>0&&e.push(new a.Selector(g)),h.length>0&&f.push(new a.Selector(h));for(var l=0;l<c.length;l++)b.push(e.concat(c[l]).concat(f))}}}(c("../tree")),function(a){a.Selector=function(a){this.elements=a,this.elements[0].combinator.value===""&&(this.elements[0].combinator.value=" ")},a.Selector.prototype.match=function(a){var b=this.elements.length,c=a.elements.length,d=Math.min(b,c);if(b<c)return!1;for(var e=0;e<d;e++)if(this.elements[e].value!==a.elements[e].value)return!1;return!0},a.Selector.prototype.eval=function(b){return new a.Selector(this.elements.map(function(a){return a.eval(b)}))},a.Selector.prototype.toCSS=function(a){return this._css?this._css:this._css=this.elements.map(function(b){return typeof b=="string"?" "+b.trim():b.toCSS(a)}).join("")}}(c("../tree")),function(b){b.URL=function(b,c){b.data?this.attrs=b:(typeof a!="undefined"&&!/^(?:https?:\/\/|file:\/\/|data:|\/)/.test(b.value)&&c.length>0&&(b.value=c[0]+(b.value.charAt(0)==="/"?b.value.slice(1):b.value)),this.value=b,this.paths=c)},b.URL.prototype={toCSS:function(){return"url("+(this.attrs?"data:"+this.attrs.mime+this.attrs.charset+this.attrs.base64+this.attrs.data:this.value.toCSS())+")"},eval:function(a){return this.attrs?this:new b.URL(this.value.eval(a),this.paths)}}}(c("../tree")),function(a){a.Value=function(a){this.value=a,this.is="value"},a.Value.prototype={eval:function(b){return this.value.length===1?this.value[0].eval(b):new a.Value(this.value.map(function(a){return a.eval(b)}))},toCSS:function(a){return this.value.map(function(b){return b.toCSS(a)}).join(a.compress?",":", ")}}}(c("../tree")),function(a){a.Variable=function(a,b,c){this.name=a,this.index=b,this.file=c},a.Variable.prototype={eval:function(b){var c,d,e=this.name;e.indexOf("@@")==0&&(e="@"+(new a.Variable(e.slice(1))).eval(b).value);if(c=a.find(b.frames,function(a){if(d=a.variable(e))return d.value.eval(b)}))return c;throw{type:"Name",message:"variable "+e+" is undefined",filename:this.file,index:this.index}}}}(c("../tree")),function(a){a.find=function(a,b){for(var c=0,d;c<a.length;c++)if(d=b.call(a,a[c]))return d;return null},a.jsify=function(a){return Array.isArray(a.value)&&a.value.length>1?"["+a.value.map(function(a){return a.toCSS(!1)}).join(", ")+"]":a.toCSS(!1)}}(c("./tree"));var f=location.protocol==="file:"||location.protocol==="chrome:"||location.protocol==="chrome-extension:"||location.protocol==="resource:";d.env=d.env||(location.hostname=="127.0.0.1"||location.hostname=="0.0.0.0"||location.hostname=="localhost"||location.port.length>0||f?"development":"production"),d.async=!1,d.poll=d.poll||(f?1e3:1500),d.watch=function(){return this.watchMode=!0},d.unwatch=function(){return this.watchMode=!1},d.env==="development"?(d.optimization=0,/!watch/.test(location.hash)&&d.watch(),d.watchTimer=setInterval(function(){d.watchMode&&m(function(a,b,c,d,e){b&&p(b.toCSS(),d,e.lastModified)})},d.poll)):d.optimization=3;var g;try{g=typeof a.localStorage=="undefined"?null:a.localStorage}catch(h){g=null}var i=document.getElementsByTagName("link"),j=/^text\/(x-)?less$/;d.sheets=[];for(var k=0;k<i.length;k++)(i[k].rel==="stylesheet/less"||i[k].rel.match(/stylesheet/)&&i[k].type.match(j))&&d.sheets.push(i[k]);d.refresh=function(a){var b,c;b=c=new Date,m(function(a,d,e,f,g){g.local?t("loading "+f.href+" from cache."):(t("parsed "+f.href+" successfully."),p(d.toCSS(),f,g.lastModified)),t("css for "+f.href+" generated in "+(new Date-c)+"ms"),g.remaining===0&&t("css generated in "+(new Date-b)+"ms"),c=new Date},a),l()},d.refreshStyles=l,d.refresh(d.env==="development")})(window);
 define('modules/labs',[
   // Global application context.
   "app",
 
   // Third-party libraries.
-  "backbone"
+  "backbone",
+  "bootstrap",
+  "less"
 ],
 
 function(app, Backbone) {
@@ -14877,7 +16715,9 @@ require.config({
     // Libraries
     jquery: "../assets/js/libs/jquery",
     lodash: "../assets/js/libs/lodash",
-    backbone: "../assets/js/libs/backbone"
+    backbone: "../assets/js/libs/backbone",
+    bootstrap: "../assets/js/libs/bootstrap",
+    less: "../assets/js/libs/less"
   },
 
   shim: {

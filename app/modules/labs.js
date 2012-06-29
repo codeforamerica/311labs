@@ -3,7 +3,9 @@ define([
   "app",
 
   // Third-party libraries.
-  "backbone"
+  "backbone",
+  "bootstrap",
+  "less"
 ],
 
 function(app, Backbone) {
