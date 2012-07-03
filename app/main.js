@@ -13,16 +13,23 @@ require([
 function(app, $, Backbone, Labs) {
   
   var labsView = new Labs.Views.Main();
+  var labsAboutView = new Labs.Views.About();
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     routes: {
-      "": "index"
+      "": "index",
+      "about": "about"
     },
 
     index: function() {
       labsView.$el.appendTo("#main");
       labsView.render();
+    },
+
+    about: function() {
+      labsAboutView.$el.appendTo("#main");
+      labsAboutView.render();
     }
   });
 

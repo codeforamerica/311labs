@@ -22,6 +22,17 @@ function(app, Backbone) {
     }
   });
 
+  Labs.Views.About = Backbone.View.extend({
+    template: "app/templates/about",
+
+    render: function(done) {
+      var tmpl = app.fetchTemplate(this.template);
+
+      // set the template contents
+      this.$el.html(tmpl());
+    }
+  });
+
   Labs.Model = Backbone.Model.extend({});
   Labs.Collection = Backbone.Model.extend({});
 
