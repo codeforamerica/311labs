@@ -25,18 +25,24 @@ function(app, $, Backbone, Labs) {
     },
 
     index: function() {
-      labsView.$el.appendTo("#main");
-      labsView.render();
+      this.showView(labsView);
     },
 
     about: function() {
-      labsAboutView.$el.appendTo("#main");
-      labsAboutView.render();
+      this.showView(labsAboutView);
     },
 
     experiments: function() {
-      labsAboutView.$el.appendTo("#main");
-      labsAboutView.render();
+      this.showView(labsExperimentsView);
+    },
+
+    showView: function(view) {
+      if (this.currentView){
+        this.currentView.close();
+      }
+      this.currentView = view;
+      this.currentView.$el.appendTo("#main");
+      this.currentView.render();
     }
   });
 
@@ -50,6 +56,15 @@ function(app, $, Backbone, Labs) {
 
     // Trigger the initial route and enable HTML5 History API support
     Backbone.history.start({ pushState: true });
+
+    // extend Backbone View object to include close/cleanup function
+    Backbone.View.prototype.close = function(){
+      this.remove();
+      this.unbind();
+      if (this.onClose){
+        this.onClose();
+      }
+    }
   });
 
   // All navigation that is relative should be passed through the navigate
