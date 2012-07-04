@@ -15,13 +15,15 @@ function(app, $, Backbone, Labs) {
   var labsView = new Labs.Views.Main();
   var labsAboutView = new Labs.Views.About();
   var labsExperimentsView = new Labs.Views.Experiments();
+  var labsContactView = new Labs.Views.Contact();
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     routes: {
       "": "index",
       "about": "about",
-      "experiments":"experiments"
+      "experiments": "experiments",
+      "contact-us": "contact"
     },
 
     index: function() {
@@ -34,6 +36,10 @@ function(app, $, Backbone, Labs) {
 
     experiments: function() {
       this.showView(labsExperimentsView);
+    },
+
+    contact: function() {
+      this.showView(labsContactView);
     },
 
     showView: function(view) {
