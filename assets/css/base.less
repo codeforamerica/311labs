@@ -303,17 +303,17 @@ footer {
 .social {
 
   li {
-  float: left;
-  margin: 10px 15px 0px 0px;
+    float: left;
+    margin: 10px 15px 0px 0px;
   }
 
   .mail,
   .octocat,
   .twitter,
   .cfa {
+    display: block;
     width:  60px;
     height: 60px;
-    display: block;
   }
 
   .mail {
@@ -343,8 +343,8 @@ footer {
 
 .contactform {
   background: #edeceb;
-  padding: 35px 12px 35px 32px;
   margin: 66px 0px 0px 6%;
+  padding: 35px 12px 35px 3%;
   
   input[type="text"],
   input[type="email"] {
@@ -366,7 +366,17 @@ footer {
 }
 
 .quote {
-  padding: 60px 0px 30px;
-  text-align: center;
+  background-image: url('../img/quote_sprite.gif');
+  display: block;
+  width: 570px;
+  height: 88px;
+  margin: 50px 0px 50px 190px;
+
+  &:hover {
+    background-position: 0px 86px;
+  }
 }
+
+  
+
 
