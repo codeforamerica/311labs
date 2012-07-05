@@ -300,9 +300,45 @@ footer {
 /* contact page
 ------------------------------------------------*/
 
-.social li {
+.social {
+
+  li {
   float: left;
   margin: 10px 15px 0px 0px;
+  }
+
+  .mail,
+  .octocat,
+  .twitter,
+  .cfa {
+    width:  60px;
+    height: 60px;
+    display: block;
+  }
+
+  .mail {
+    background-image: url('../img/mail_icons.png');
+  }
+
+  .octocat {
+    background-image: url('../img/octocat_icons.png');
+  }
+
+  .twitter {
+    background-image: url('../img/twitter_icons.png');
+  }
+
+   .cfa {
+    background-image: url('../img/cfa_icons.png');
+  }
+
+  .mail:hover,
+  .octocat:hover,
+  .twitter:hover,
+  .cfa:hover {
+    background-position: 0px -59px;
+  }
+
 }
 
 .contactform {
