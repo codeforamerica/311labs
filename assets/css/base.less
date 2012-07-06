@@ -5,6 +5,14 @@ body {
   font-weight: 400;
 }
 
+a {
+  color: #333333;
+
+  &:hover{
+    color: #40D5A2;
+  }
+}
+
 h2 {
   font-size: 22px;
   padding-top: 20px;
@@ -17,6 +25,10 @@ h3 {
 p {
   font-size: 17px;
   line-height: 22px;
+}
+
+li {
+  float: left;
 }
 
 input {
@@ -157,7 +169,6 @@ select:focus:required:invalid:focus {
   padding-top: 10px;
 
   li {
-  float: left;
   padding-right: 35px;
   }
 
@@ -253,10 +264,6 @@ footer {
     float: right;
   }
 
-  li {
-    float: left;
-  }
-
   a {
     color: #ffffff;
     font-size: 16px;
@@ -276,7 +283,6 @@ footer {
 ------------------------------------------------*/
 
 .team_li {
-  float: left;
   width: 200px;
   height: auto;
   margin: 20px 40px 0px 0px;
@@ -308,7 +314,6 @@ footer {
 .social {
 
   li {
-    float: left;
     margin: 10px 15px 0px 0px;
   }
 
@@ -391,7 +396,7 @@ footer {
 }
 
 .screenshots {
-  margin: 80px 50px 0px;
+  margin: 80px 50px 40px;
   text-align: center;
   font-size: 18px;
 
@@ -401,8 +406,9 @@ footer {
   }
 
   .screenshot-tagline {
-    font-style: italic;
     border-bottom: 1px lightgray solid;
+    color: #40D5A2;
+    font-style: italic;
     padding-bottom: 20px;
   }
 
@@ -420,11 +426,46 @@ footer {
   }
 
   .cities {
-    padding-top: 5px;
+    padding: 5px 0px 45px;
   }
 }
 
-.github {
-  background-image: url('../img/octocat_icons_sprite2.png');
+a.github,
+a.contact {
+  font-size: 16px;
 }
+
+a.github {
+  padding: 10px 0px 0px 13px;
+}
+
+.github {
+  background: url('../img/octocat_icons_sprite2.png') no-repeat; 
+  display: block;
+  width: 200px;
+  height: 30px;
+
+  &:hover {
+    background-position: 0px -40px;
+  }
+}
+
+.contact {
+  width: 325px;
+  height: 30px;
+  display: block;
+  background: url('../img/mail_icons_sprite2.png') no-repeat; 
+
+  &:hover {
+    background-position: 0px -34px;
+  }
+
+}
+
+a.contact {
+  padding-top: 5px;
+  margin-top: 4px;
+}
+
+
 
