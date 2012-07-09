@@ -3,11 +3,11 @@
     <div class="row">
   	  <div class="span12 navbar">
   	    <ul class="nav">
-          <li><a href="/">Experiments</a></li>
+          <li><a href="/experiments">Experiments</a></li>
           <li><a href="http://open311.org/" target="_blank">Open311</a></li>
           <li class="logo"><a href="/"><img src="assets/img/labs_logo.png"></a></li>
-          <li><a href="/">About</a></li>
-          <li><a href="/">Contact Us</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
         </ul>
   	  </div>
 	  </div>
@@ -26,7 +26,7 @@
   </div>
 </div>  
 
-<div class="featured-app">
+<div class="featured-app background">
   <div class="container">
     
     <div class="row">
@@ -48,10 +48,12 @@
 
     <div class="row">
       <div class="span11 offset1 citysignup">
-        <h3>Want The Daily Brief in your city? Let our scientist know!</h3>
-        <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-        <input type="text" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">
-        <input type="submit" class="button" value="SUBMIT">
+        <h3>Want The Daily Brief in your city? Let our scientists know!</h3>
+        <form>
+          <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
+          <input type="text" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">
+          <input type="submit" class="button" value="SUBMIT">
+        </form>
       </div>  
     </div> 
 
@@ -64,9 +66,9 @@
       <div class="span12">
         <div class="center">
           <span class="broughtbytxt">Brought to you by:</span><br />
-          <img src="assets/img/cfa_logo.png" alt="Code for America logo" /> 
+          <a href="http://codeforamerica.org"><img src="assets/img/cfa_logo.png" alt="Code for America logo" /></a>
           <span class="plus">+</span>
-          <img src="assets/img/chi_logo.png" alt="City of Chicago logo" />
+          <a href="http://www.cityofchicago.org/city/en.html"><img src="assets/img/chi_logo.png" alt="City of Chicago logo" /></a>
         </div>
       </div>
     </div>
@@ -77,9 +79,11 @@
   <div class="container">
     <div class="row">
       <div class="span5 emailsignup">
-        <label>Civic experiments, delivered!</label>
-        <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-        <input type="submit" class="small-button" value="JOIN">
+        <form>
+          <label>Civic experiments, delivered!</label>
+          <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
+          <input type="submit" class="small-button" value="JOIN">
+        </form>
       </div>
       <div class="span7">  
         <ul class="unstyled">

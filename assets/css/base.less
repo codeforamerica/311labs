@@ -5,6 +5,14 @@ body {
   font-weight: 400;
 }
 
+a {
+  color: #333333;
+
+  &:hover{
+    color: #40D5A2;
+  }
+}
+
 h2 {
   font-size: 22px;
   padding-top: 20px;
@@ -15,12 +23,22 @@ h3 {
 }
 
 p {
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+li {
+  float: left;
 }
 
 input {
   font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.background {
+  background: #ffffff;
+  padding: 70px 0px 90px;
+  margin: 0px 50px 50px;
 }
 
 input:focus:required:invalid:focus,
@@ -47,7 +65,7 @@ select:focus:required:invalid:focus {
   left: auto;
   float: none;
   margin: 0 auto;
-  width: 508px;
+  width: 512px;
 }
 
 .navbar .nav > li {
@@ -124,9 +142,6 @@ select:focus:required:invalid:focus {
 }
 
 .featured-app {
-  background: #ffffff;
-  padding: 50px 0px;
-  margin: 0px 50px;
   -moz-box-shadow: 0px 0px 20px #000;
   -webkit-box-shadow: 0px 0px 20px #000;
   box-shadow: 0px 0px 20px #000;
@@ -143,13 +158,17 @@ select:focus:required:invalid:focus {
 
 .blurb {
   padding-top: 52px;
+
+  p {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
 
 .cities {
   padding-top: 10px;
 
   li {
-  float: left;
   padding-right: 35px;
   }
 
@@ -186,7 +205,7 @@ select:focus:required:invalid:focus {
 }
 
 .broughtby {
-  padding: 60px 0px;
+  padding: 30px 0px 60px;
   
   .center {
     margin: 0 auto;
@@ -245,10 +264,6 @@ footer {
     float: right;
   }
 
-  li {
-    float: left;
-  }
-
   a {
     color: #ffffff;
     font-size: 16px;
@@ -263,3 +278,181 @@ footer {
     float: right;
   }
 }
+
+
+/* experiments page
+------------------------------------------------*/
+  
+.experimentsnav li {
+  float: none;
+  padding: 20px 0px;
+}
+
+.screenshots {
+  margin: 57px 50px 0px;
+  text-align: center;
+  font-size: 18px;
+
+  h2 {
+    font-size: 26px;
+    margin: 7px 0px 2px;
+  }
+
+  .screenshot-tagline {
+    border-bottom: 1px lightgray solid;
+    color: #40D5A2;
+    font-style: italic;
+    padding-bottom: 20px;
+  }
+
+  h3, 
+  .screenshot-info {
+    text-align: left;
+  }
+
+  h3 {
+    padding: 15px 0px 5px;
+  }
+
+  .screenshot-info {
+    margin-top: 27px;
+  }
+
+  .cities {
+    padding: 5px 0px 45px;
+  }
+}
+
+a.github,
+a.contact {
+  font-size: 16px;
+}
+
+a.github {
+  padding: 10px 0px 0px 13px;
+}
+
+.github {
+  background: url('../img/octocat_icons_sprite2.png') no-repeat; 
+  display: block;
+  width: 200px;
+  height: 30px;
+
+  &:hover {
+    background-position: 0px -40px;
+  }
+}
+
+.contact {
+  width: 325px;
+  height: 30px;
+  display: block;
+  background: url('../img/mail_icons_sprite2.png') no-repeat; 
+
+  &:hover {
+    background-position: 0px -34px;
+  }
+
+}
+
+a.contact {
+  padding-top: 5px;
+  margin-top: 4px;
+}
+
+
+/* about page
+------------------------------------------------*/
+
+.molecules {
+  display: block;
+  width: 350px;
+  height: 500px;
+  background-image: url('../img/molecules_sprite.gif');
+
+  &:hover {
+    background-position: -385px 0px;
+  }
+}
+
+
+/* contact page
+------------------------------------------------*/
+
+.social {
+
+  li {
+    margin: 10px 15px 0px 0px;
+  }
+
+  .mail,
+  .octocat,
+  .twitter,
+  .cfa {
+    display: block;
+    width:  60px;
+    height: 60px;
+  }
+
+  .mail {
+    background-image: url('../img/mail_icons.png');
+  }
+
+  .octocat {
+    background-image: url('../img/octocat_icons.png');
+  }
+
+  .twitter {
+    background-image: url('../img/twitter_icons.png');
+  }
+
+   .cfa {
+    background-image: url('../img/cfa_icons.png');
+  }
+
+  .mail:hover,
+  .octocat:hover,
+  .twitter:hover,
+  .cfa:hover {
+    background-position: 0px -59px;
+  }
+
+}
+
+.contactform {
+  background: #edeceb;
+  margin: 66px 0px 0px 6%;
+  padding: 35px 10px 35px 3%;
+  
+  input[type="text"],
+  input[type="email"] {
+    float: left;
+    height: 28px;
+    margin: 0px 10px 20px 0px;
+    width: 91%;
+  }
+
+  select {
+    margin-bottom: 20px;
+  }
+
+  textarea {
+    width: 91%;
+    resize: vertical;
+    margin-bottom: 20px;
+  }
+}
+
+.quote {
+  background-image: url('../img/quote_sprite.gif');
+  display: block;
+  float: none;
+  width: 570px;
+  height: 88px;
+  margin: 50px auto 0px;
+
+  &:hover {
+    background-position: 0px 86px;
+  }
+}
+
