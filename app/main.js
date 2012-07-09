@@ -70,7 +70,7 @@ function(app, $, Backbone, Labs) {
       if (this.onClose){
         this.onClose();
       }
-    }
+    };
   });
 
   // All navigation that is relative should be passed through the navigate
