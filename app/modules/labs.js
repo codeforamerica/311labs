@@ -85,7 +85,8 @@ function(app, Backbone) {
     },
 
     events: {
-      "click #submit-email-city-note": _handleUserContactInfoClickEvent
+      "click #submit-email-city-note": _handleUserContactInfoClickEvent,
+      "click #submit-email": _handleUserContactInfoClickEvent
     }
   });
 
@@ -122,20 +123,23 @@ function(app, Backbone) {
   function _captureUserContactInfo(data) {
     // guard / validation
     if(data.type === "submit-email-city-note" || data.type === "submit-email-city") { 
-      if (data.emailAddress === "" || data.city === "")
+      // form says that required values are not valid; eject
+      if (!data.emailAddress[0].validity.valid || !data.city[0].validity.valid)
         return;
+      
     }
     if(data.type === "submit-email") { 
-      if (data.emailAddress === "")
+      // form says that required value is not valid; eject
+      if (!data.emailAddress[0].validity.valid) 
         return;
     }
 
-    // create indication of interest model and save
+    // we are good; create indication of interest model and save
     var ioi = new Labs.IndicationOfInterest({
-          "emailAddress": data.emailAddress,
-          "city": data.city,
-          "note": data.note
-        }).save();
+      "emailAddress": data.emailAddress.val(),
+      "city": data.city.val(),
+      "note": data.note.val()
+    }).save();
     
     // show modal
     $("#contact-modal").modal('toggle');
@@ -143,9 +147,9 @@ function(app, Backbone) {
 
   function _handleUserContactInfoClickEvent(e) {
     // get data elements from submitting form
-    var emailAddress = $('#emailAddress', e.srcElement.form).val();
-    var city = $('#city', e.srcElement.form).val();
-    var note = $('#note', e.srcElement.form).val();
+    var emailAddress = $('#emailAddress', e.srcElement.form);
+    var city = $('#city', e.srcElement.form);
+    var note = $('#note', e.srcElement.form);
 
     // package data elements and pass to capture
     var data = {
