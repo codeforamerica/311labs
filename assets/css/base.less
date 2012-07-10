@@ -286,8 +286,20 @@ footer {
 .experimentsnav li {
   float: none;
   padding: 20px 0px;
+  cursor: pointer;
 }
 
+.experimentsnav li.selected {
+   font-weight: bold;
+}
+
+div.experiments{
+   display: none;
+}
+
+div.screenshots :first-child{
+   display: block;
+}
 .screenshots {
   margin: 57px 50px 0px;
   text-align: center;

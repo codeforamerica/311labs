@@ -66,7 +66,8 @@ function(app, Backbone) {
     },
 
     events: {
-      "click #submit-email": _handleUserContactInfoClickEvent
+        "click #submit-email": _handleUserContactInfoClickEvent,
+        "click .experimentsnav li": _handleExperimentNavigationClickEvent
     }
   });
 
@@ -156,6 +157,16 @@ function(app, Backbone) {
     };
     _captureUserContactInfo(data);
   }
+
+  function _handleExperimentNavigationClickEvent(e){
+      var id = $(e.target).attr("id").split("-")[1];
+      $(".experiments").fadeOut("fast", function(){
+          $("#experiment-"+id).fadeIn();
+      });
+      $("ul.experimentsnav li").removeClass("selected");
+      $(e.target).addClass("selected");
+  }
+
 
   return Labs;
 });
