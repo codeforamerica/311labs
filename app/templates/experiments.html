@@ -61,9 +61,11 @@
   <div class="container">
     <div class="row">
       <div class="span5 emailsignup">
-        <label>Civic experiments, delivered!</label>
-        <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-        <input type="submit" class="small-button" value="JOIN">
+        <form onSubmit="return false;">
+          <label>Civic experiments, delivered!</label>
+          <input type="email" id="emailAddress" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
+          <input type="submit" id="submit-email" class="small-button" value="JOIN">
+        </form>
       </div>
       <div class="span7">  
         <ul class="unstyled">

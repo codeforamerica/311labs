@@ -31,11 +31,11 @@
         </ul>
       </div>
       <div class="span4 contactform">
-        <form action="">
-          <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-          <input type="text" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">
-          <textarea rows="5" cols="10" name="note" placeholder="LEAVE A NOTE"></textarea>
-          <input type="submit" class="button" value="SUBMIT">
+        <form onSubmit="return false;">
+          <input type="email" id="emailAddress" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
+          <input type="text" id="city" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">
+          <textarea rows="5" id="note" cols="10" name="note" placeholder="LEAVE A NOTE"></textarea>
+          <input type="submit" class="button" id="submit-email-city-note" value="SUBMIT">
         </form>
       </div>  
     </div>
@@ -54,7 +54,7 @@
       <div class="span5 emailsignup">
         <label>Civic experiments, delivered!</label>
         <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-        <input type="submit" class="small-button" value="JOIN">
+        <input type="submit" class="small-button" id="submit-email" value="JOIN">
       </div>
       <div class="span7">  
         <ul class="unstyled">

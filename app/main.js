@@ -12,11 +12,6 @@ require([
 
 function(app, $, Backbone, Labs) {
   
-  var labsView = new Labs.Views.Main();
-  var labsAboutView = new Labs.Views.About();
-  var labsExperimentsView = new Labs.Views.Experiments();
-  var labsContactView = new Labs.Views.Contact();
-
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     routes: {
@@ -27,18 +22,22 @@ function(app, $, Backbone, Labs) {
     },
 
     index: function() {
+      var labsView = new Labs.Views.Main();
       this.showView(labsView);
     },
 
     about: function() {
+      var labsAboutView = new Labs.Views.About();
       this.showView(labsAboutView);
     },
 
     experiments: function() {
+      var labsExperimentsView = new Labs.Views.Experiments();
       this.showView(labsExperimentsView);
     },
 
     contact: function() {
+      var labsContactView = new Labs.Views.Contact();
       this.showView(labsContactView);
     },
 
@@ -48,7 +47,6 @@ function(app, $, Backbone, Labs) {
       }
       this.currentView = view;
       this.currentView.$el.appendTo("#main");
-      this.currentView.render();
     }
   });
 
