@@ -49,10 +49,10 @@
     <div class="row">
       <div class="span11 offset1 citysignup">
         <h3>Want The Daily Brief in your city? Let our scientists know!</h3>
-        <form>
-          <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-          <input type="text" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">
-          <input type="submit" class="button" value="SUBMIT">
+        <form onSubmit="return false;">
+          <input type="email" id="emailAddress" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
+          <input type="text" id="city" class="input-text" required="required" name="city" placeholder="ENTER YOUR CITY">
+          <input type="submit" id="submit-email-city" class="button" value="SUBMIT">
         </form>
       </div>  
     </div> 
@@ -79,10 +79,10 @@
   <div class="container">
     <div class="row">
       <div class="span5 emailsignup">
-        <form>
+        <form onSubmit="return false;">
           <label>Civic experiments, delivered!</label>
-          <input type="email" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
-          <input type="submit" class="small-button" value="JOIN">
+          <input type="email" id="emailAddress" class="input-text" required="required" name="emailAddress" placeholder="ENTER YOUR EMAIL">
+          <input type="submit" id="submit-email" class="small-button" value="JOIN">
         </form>
       </div>
       <div class="span7">  
