@@ -10,6 +10,7 @@ a {
 
   &:hover{
     color: #40D5A2;
+    text-decoration: none;
   }
 }
 
@@ -24,7 +25,7 @@ h3 {
 
 p {
   font-size: 17px;
-  line-height: 22px;
+  line-height: 23px;
 }
 
 li {
@@ -85,7 +86,6 @@ select:focus:required:invalid:focus {
 .navbar .nav > li > a, footer li {
   &:hover{
     color: #40d5a2;
-    text-decoration: underline;
   }
 }
 
@@ -286,8 +286,25 @@ footer {
 .experimentsnav li {
   float: none;
   padding: 20px 0px;
+  cursor: pointer;
+
+  &:hover {
+    color: #40d5a2;
+  }
 }
 
+.experimentsnav li.selected {
+   font-weight: bold;
+   color: #40d5a2;
+}
+
+div.experiments{
+   display: none;
+}
+
+div.screenshots :first-child{
+   display: block;
+}
 .screenshots {
   margin: 57px 50px 0px;
   text-align: center;
@@ -300,9 +317,9 @@ footer {
 
   .screenshot-tagline {
     border-bottom: 1px lightgray solid;
-    color: #40D5A2;
+    color: #4BCFBF;
     font-style: italic;
-    padding-bottom: 20px;
+    padding-bottom: 27px;
   }
 
   h3, 
@@ -311,11 +328,11 @@ footer {
   }
 
   h3 {
-    padding: 15px 0px 5px;
+    padding: 0px 0px 5px;
   }
 
   .screenshot-info {
-    margin-top: 27px;
+    margin: 27px 0px 23px;
   }
 
   .cities {
@@ -456,3 +473,58 @@ a.contact {
   }
 }
 
+ /* modal
+------------------------------------------------*/
+
+.modal {
+  border: 11px rgba(255, 255, 255, 0.7) solid;
+  margin-left: -255px;
+  width: 490px;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  text-align: center;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 4px;
+
+  img {
+    margin: 0 auto;
+    display: block;
+    padding-top: 30px;
+  }
+
+  h2 {
+    padding-top: 12px;
+  }
+}
+
+.modal-body {
+  padding: 0px;
+}
+
+.modal-footer {
+  background-color: white;
+  border-top: none;
+  padding: 15px 0px 40px;
+
+
+  .btn {
+    background: #9d3567;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+    &:hover {
+     background: #611D40;
+    }
+  }
+}
