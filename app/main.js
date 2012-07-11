@@ -82,7 +82,8 @@ function(app, $, Backbone, Labs) {
 
     // Ensure the protocol is not part of URL, meaning it's relative.
     if (href && href.slice(0, protocol.length) !== protocol &&
-        href.indexOf("javascript:") !== 0) {
+        href.indexOf("javascript:") !== 0  &&
+         href.indexOf("mailto:") !== 0) {
       // Stop the default event to ensure the link will not cause a page
       // refresh.
       evt.preventDefault();
