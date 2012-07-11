@@ -173,9 +173,9 @@ function(app, Backbone) {
 
   function _handleUserContactInfoClickEvent(e) {
     // get data elements from submitting form
-    emailAddress = $('#emailAddress', e.srcElement.form);
-    city = $('#city', e.srcElement.form);
-    note = $('#note', e.srcElement.form);
+    emailAddress = $('#emailAddress', e.target.form);
+    city = $('#city', e.target.form);
+    note = $('#note', e.target.form);
 
     // package data elements and pass to capture
     var data = {
