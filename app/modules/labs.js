@@ -38,6 +38,7 @@ function(app, Backbone) {
 
     initialize: function(options) {
       this.render();
+      $(this.el).find("ul.nav li.about").addClass("selected");
     },
 
     render: function(done) {
@@ -58,12 +59,13 @@ function(app, Backbone) {
 
     initialize: function(options) {
       this.render();
+      $(this.el).find("ul.nav li.experiments").addClass("selected");
     },
 
     render: function(done) {
       var tmpl = app.fetchTemplate(this.template);
       _setTemplates(tmpl, this);
-
+      
       return this;
     },
 
@@ -79,6 +81,7 @@ function(app, Backbone) {
 
     initialize: function(options) {
       this.render();
+      $(this.el).find("ul.nav li.contactus").addClass("selected");
     },
 
     render: function(done) {
@@ -118,6 +121,8 @@ function(app, Backbone) {
     // set the template contents
     view.$el.html(tmpl());
     // inject modal template for contact information responses
+    var headerTempl = app.fetchTemplate("app/templates/_header");
+    $(view.el).prepend(headerTempl);
     var contactModalTempl = app.fetchTemplate("app/templates/_contact-modal");
     $(view.el).append(contactModalTempl);
   }
@@ -183,7 +188,7 @@ function(app, Backbone) {
 
   function _handleExperimentNavigationClickEvent(e){
     var id = $(e.target).attr("id").split("-")[1];
-    $(".experiments:visible").fadeOut("slow", function(){
+    $("div.screenshots div.experiments:visible").fadeOut("slow", function(){
         $("#experiment-"+id).fadeIn();
     });
     $("ul.experimentsnav li").removeClass("selected");
