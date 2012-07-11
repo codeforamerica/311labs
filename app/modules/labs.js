@@ -160,7 +160,7 @@ function(app, Backbone) {
 
   function _handleExperimentNavigationClickEvent(e){
       var id = $(e.target).attr("id").split("-")[1];
-      $(".experiments").fadeOut("fast", function(){
+      $(".experiments:visible").fadeOut("slow", function(){
           $("#experiment-"+id).fadeIn();
       });
       $("ul.experimentsnav li").removeClass("selected");
