@@ -17,7 +17,8 @@ function(app, $, Backbone, Labs) {
     routes: {
       "": "index",
       "about": "about",
-      "experiments": "experiments",
+      "experiments*": "experiments",
+      "experiments/:name": "experiments",
       "contact-us": "contact"
     },
 
@@ -31,9 +32,9 @@ function(app, $, Backbone, Labs) {
       this.showView(labsAboutView);
     },
 
-    experiments: function() {
-      var labsExperimentsView = new Labs.Views.Experiments();
-      this.showView(labsExperimentsView);
+    experiments: function(name) {
+        var labsExperimentsView = new Labs.Views.Experiments({name:name});
+        this.showView(labsExperimentsView);
     },
 
     contact: function() {

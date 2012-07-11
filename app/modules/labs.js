@@ -56,8 +56,11 @@ function(app, Backbone) {
 
   Labs.Views.Experiments = Backbone.View.extend({
     template: "app/templates/experiments",
-
+    experimentName: "",
     initialize: function(options) {
+      if(options.name){
+          this.experimentName = options.name;
+      }
       this.render();
       $(this.el).find("ul.nav li.experiments").addClass("selected");
     },
@@ -65,7 +68,12 @@ function(app, Backbone) {
     render: function(done) {
       var tmpl = app.fetchTemplate(this.template);
       _setTemplates(tmpl, this);
-      
+      if(this.experimentName){
+        $(this.el).find("div.screenshots div.experiments").hide();
+        $(this.el).find("div.screenshots div#experiment-"+this.experimentName).show();
+        $(this.el).find("ul.experimentsnav li").removeClass("selected");
+        $(this.el).find("ul.experimentsnav li#expnav-"+this.experimentName).addClass("selected");
+      }
       return this;
     },
 
@@ -193,6 +201,7 @@ function(app, Backbone) {
     });
     $("ul.experimentsnav li").removeClass("selected");
     $(e.target).addClass("selected");
+    Backbone.history.navigate("experiments/"+id, {replace: true});
   }
 
   return Labs;
