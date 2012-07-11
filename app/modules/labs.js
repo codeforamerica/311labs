@@ -27,7 +27,8 @@ function(app, Backbone) {
 
     events: {
       "click #submit-email-city": _handleUserContactInfoClickEvent,
-      "click #submit-email": _handleUserContactInfoClickEvent
+      "click #submit-email": _handleUserContactInfoClickEvent,
+      "click #confirm-submission": _clearFields
     }
 
   });
@@ -47,7 +48,8 @@ function(app, Backbone) {
     },
 
     events: {
-      "click #submit-email": _handleUserContactInfoClickEvent
+      "click #submit-email": _handleUserContactInfoClickEvent,
+      "click #confirm-submission": _clearFields
     }
   });
 
@@ -66,7 +68,8 @@ function(app, Backbone) {
     },
 
     events: {
-      "click #submit-email": _handleUserContactInfoClickEvent
+      "click #submit-email": _handleUserContactInfoClickEvent,
+      "click #confirm-submission": _clearFields
     }
   });
 
@@ -86,7 +89,8 @@ function(app, Backbone) {
 
     events: {
       "click #submit-email-city-note": _handleUserContactInfoClickEvent,
-      "click #submit-email": _handleUserContactInfoClickEvent
+      "click #submit-email": _handleUserContactInfoClickEvent,
+      "click #confirm-submission": _clearFields
     }
   });
 
@@ -120,6 +124,11 @@ function(app, Backbone) {
   /*
    * Utilities for saving form data.
    */
+
+  var emailAddress = null;
+  var city = null;
+  var note = null;
+
   function _captureUserContactInfo(data) {
     // guard / validation
     if(data.type === "submit-email-city-note" || data.type === "submit-email-city") { 
@@ -135,10 +144,13 @@ function(app, Backbone) {
     }
 
     // we are good; create indication of interest model and save
+    var d = new Date();
     var ioi = new Labs.IndicationOfInterest({
       "emailAddress": data.emailAddress.val(),
       "city": data.city.val(),
-      "note": data.note.val()
+      "note": data.note.val(),
+      "type": data.type,
+      "time": d.toUTCString()
     }).save();
     
     // show modal
@@ -147,9 +159,9 @@ function(app, Backbone) {
 
   function _handleUserContactInfoClickEvent(e) {
     // get data elements from submitting form
-    var emailAddress = $('#emailAddress', e.srcElement.form);
-    var city = $('#city', e.srcElement.form);
-    var note = $('#note', e.srcElement.form);
+    emailAddress = $('#emailAddress', e.srcElement.form);
+    city = $('#city', e.srcElement.form);
+    note = $('#note', e.srcElement.form);
 
     // package data elements and pass to capture
     var data = {
@@ -159,6 +171,13 @@ function(app, Backbone) {
       "note": note
     };
     _captureUserContactInfo(data);
+  }
+
+  function _clearFields(e) {
+    // clear form fields
+    emailAddress[0].value = "";
+    city[0].value = "";
+    note[0].value = "";
   }
 
   return Labs;
