@@ -69,8 +69,8 @@ function(app, Backbone) {
       var tmpl = app.fetchTemplate(this.template);
       _setTemplates(tmpl, this);
       if(this.experimentName){
-        $(this.el).find("div.screenshots div.experiments").hide()
-        $(this.el).find("div.screenshots div#experiment-"+this.experimentName).show()
+        $(this.el).find("div.screenshots div.experiments").hide();
+        $(this.el).find("div.screenshots div#experiment-"+this.experimentName).show();
         $(this.el).find("ul.experimentsnav li").removeClass("selected");
         $(this.el).find("ul.experimentsnav li#expnav-"+this.experimentName).addClass("selected");
       }
