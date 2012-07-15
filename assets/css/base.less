@@ -62,6 +62,9 @@ select:focus:required:invalid:focus {
   font-weight:700;
   background: url('/assets/img/triangle.png') no-repeat bottom center;
 }
+.navbar-inner .container{
+  max-height:90px;
+}
 
 .navbar {
   margin: 0px;
@@ -73,6 +76,11 @@ select:focus:required:invalid:focus {
   float: none;
   margin: 0 auto;
   width: 514px;
+}
+@media (max-width: 767px) {
+  .navbar .nav{
+     width:100%;
+  }
 }
 
 .navbar .nav > li {
@@ -88,6 +96,17 @@ select:focus:required:invalid:focus {
 .navbar .nav > li > a {
   color: #ffffff;
   font-size: 18px;
+}
+
+@media (max-width: 550px) {
+  .navbar .nav > li > a{
+    font-size:12px;
+  }
+}
+@media (max-width: 430px) {
+  .navbar .nav > li > a{
+    font-size:8px;
+  }
 }
 
 .navbar .nav > li > a, footer li {
@@ -344,7 +363,7 @@ div.screenshots :first-child{
 }
 
 a.github,
-a.contact {
+a.contat {
   font-size: 16px;
 }
 
@@ -389,7 +408,7 @@ a.contact {
   width: 350px;
   height: 500px;
   background-image: url('../img/molecules_sprite.gif');
-
+  max-width:100%;
   &:hover {
     background-position: -385px 0px;
   }
@@ -470,7 +489,7 @@ a.contact {
   width: 570px;
   height: 88px;
   margin: 50px auto 0px;
-
+  max-width:100%;
   &:hover {
     background-position: 0px 86px;
   }
