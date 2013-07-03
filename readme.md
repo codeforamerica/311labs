@@ -1,12 +1,17 @@
 311 Labs
 ====================
 
-Under constructions - check back soon!
+this is a static site generator using [backbone-boilerplate](https://github.com/backbone-boilerplate/backbone-boilerplate)
 
+## getting it to run
 
-## Build process ##
+```
+npm install
+npm start
+```
 
-To use the new and improved build process, please visit the 
-[grunt-bbb](https://github.com/backbone-boilerplate/grunt-bbb)
-plugin repo and follow the instructions to install.  Basing your project off
-this repo will allow the `bbb` commands to work out-of-the-box.
+## building the static files
+
+```
+npm run build
+```

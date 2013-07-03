@@ -1,11 +1,17 @@
 {
-  "name": "blockee",
+  "name": "311labs",
   "version": "0.0.1",
   "dependencies" : {
-    "connect"  :  "2.3.3",
-    "bbb" :  "0.1.2"
+    "connect"  :  "2.3.3"
   },
   "engines": {
     "node": "0.6.x"
+  },
+  "scripts": {
+    "start": "bbb server",
+    "build": "bbb release"
+  },
+  "devDependencies": {
+    "bbb": "0.2.0-alpha-5"
   }
 }
